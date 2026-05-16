@@ -209,7 +209,7 @@ export default function CartDrawer() {
                   Verzendkosten worden berekend bij het afrekenen
                 </p>
                 <a
-                  href={`https://bandotiger.myshopify.com/cart/${items.map(i => `${i.variantId}:${i.qty}`).join(',')}`}
+                  href={`https://shop.bandotigerss.com/cart/${items.map(i => `${i.variantId}:${i.qty}`).join(',')}`}
                   style={{
                     display: 'block', width: '100%', padding: '1.1rem',
                     background: 'var(--off-white)', color: 'var(--black)',
