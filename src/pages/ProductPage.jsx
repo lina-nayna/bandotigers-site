@@ -187,6 +187,28 @@ export default function ProductPage() {
               </button>
             )}
 
+            {/* Shipping info */}
+            <div style={{
+              marginTop: '1.5rem', padding: '1rem 1.2rem',
+              background: 'rgba(255,255,255,0.03)',
+              border: '1px solid rgba(255,255,255,0.07)',
+              display: 'flex', flexDirection: 'column', gap: '0.4rem',
+            }}>
+              {[
+                { icon: '🚚', text: 'Gratis verzending naar BE / NL / LU / DE' },
+                { icon: '🌍', text: 'Gratis wereldwijd bij bestelling boven €150' },
+                { icon: '↩️', text: 'Retourneren binnen 14 dagen' },
+              ].map(item => (
+                <p key={item.text} style={{
+                  fontFamily: 'Inter', fontSize: '0.62rem',
+                  color: 'rgba(242,237,230,0.55)', letterSpacing: '0.05em',
+                  display: 'flex', alignItems: 'center', gap: '0.6rem',
+                }}>
+                  <span>{item.icon}</span> {item.text}
+                </p>
+              ))}
+            </div>
+
             {/* Description */}
             <div style={{ marginTop: '3.5rem', paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
               <p style={{

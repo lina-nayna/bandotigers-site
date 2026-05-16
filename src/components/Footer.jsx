@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Footer() {
   const [email, setEmail] = useState('')
@@ -106,8 +107,11 @@ export default function Footer() {
           </p>
           {/* Socials */}
           <div style={{ display: 'flex', gap: '1rem' }}>
-            {['IG', 'TT', 'PIN'].map(s => (
-              <a key={s} href="#" style={{
+            {[
+              { label: 'IG', href: 'https://www.instagram.com/bandotigers' },
+              { label: 'TT', href: 'https://www.tiktok.com/@bandotigers' },
+            ].map(s => (
+              <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" style={{
                 width: '36px', height: '36px',
                 border: '1px solid rgba(255,255,255,0.12)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -118,15 +122,37 @@ export default function Footer() {
               }}
               onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.5)'; e.currentTarget.style.color = 'var(--off-white)' }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'; e.currentTarget.style.color = 'var(--silver)' }}
-              >{s}</a>
+              >{s.label}</a>
             ))}
           </div>
         </div>
 
         {[
-          { title: 'Shop', links: ['New Arrivals', 'Hoodies', 'T-Shirts', 'Accessories', 'Sale'] },
-          { title: 'Info', links: ['Our Story', 'Size Guide', 'Delivery', 'Returns', 'FAQ'] },
-          { title: 'Contact', links: ['Instagram DM', 'hello@bandotigers.com', 'Wholesale', 'Press'] },
+          {
+            title: 'Shop',
+            links: [
+              { label: 'Alle stukken', href: '/#collection' },
+              { label: 'Hoodies', href: '/#collection' },
+              { label: 'T-Shirts', href: '/#collection' },
+              { label: 'Lookbook', href: '/#lookbook' },
+            ],
+          },
+          {
+            title: 'Info',
+            links: [
+              { label: 'Our Story', href: '/#manifesto' },
+              { label: 'Early Access', href: '/#early-access' },
+              { label: 'Retourbeleid', href: '/terms#herroeping' },
+              { label: 'Verzending', href: '/terms#verzending' },
+            ],
+          },
+          {
+            title: 'Contact',
+            links: [
+              { label: 'Instagram DM', href: 'https://www.instagram.com/bandotigers', external: true },
+              { label: 'bandotiger@hotmail.com', href: 'mailto:bandotiger@hotmail.com', external: true },
+            ],
+          },
         ].map(col => (
           <div key={col.title}>
             <p style={{
@@ -137,15 +163,26 @@ export default function Footer() {
             }}>{col.title}</p>
             <ul style={{ listStyle: 'none' }}>
               {col.links.map(l => (
-                <li key={l} style={{ marginBottom: '0.75rem' }}>
-                  <a href="#" style={{
-                    color: 'var(--silver)', textDecoration: 'none',
-                    fontSize: '0.78rem', fontFamily: 'Inter, sans-serif',
-                    fontWeight: 300, transition: 'color 0.3s',
-                  }}
-                  onMouseEnter={e => e.target.style.color = 'var(--off-white)'}
-                  onMouseLeave={e => e.target.style.color = 'var(--silver)'}
-                  >{l}</a>
+                <li key={l.label} style={{ marginBottom: '0.75rem' }}>
+                  {l.external ? (
+                    <a href={l.href} target="_blank" rel="noopener noreferrer" style={{
+                      color: 'var(--silver)', textDecoration: 'none',
+                      fontSize: '0.78rem', fontFamily: 'Inter, sans-serif',
+                      fontWeight: 300, transition: 'color 0.3s',
+                    }}
+                    onMouseEnter={e => e.target.style.color = 'var(--off-white)'}
+                    onMouseLeave={e => e.target.style.color = 'var(--silver)'}
+                    >{l.label}</a>
+                  ) : (
+                    <a href={l.href} style={{
+                      color: 'var(--silver)', textDecoration: 'none',
+                      fontSize: '0.78rem', fontFamily: 'Inter, sans-serif',
+                      fontWeight: 300, transition: 'color 0.3s',
+                    }}
+                    onMouseEnter={e => e.target.style.color = 'var(--off-white)'}
+                    onMouseLeave={e => e.target.style.color = 'var(--silver)'}
+                    >{l.label}</a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -168,15 +205,19 @@ export default function Footer() {
           © 2025 Bando Tigers. All rights reserved.
         </p>
         <div style={{ display: 'flex', gap: '2rem' }}>
-          {['Privacy', 'Terms', 'Cookies'].map(l => (
-            <a key={l} href="#" style={{
+          {[
+            { label: 'Privacy', to: '/privacy' },
+            { label: 'Voorwaarden', to: '/terms' },
+            { label: 'Cookies', to: '/cookies' },
+          ].map(l => (
+            <Link key={l.label} to={l.to} style={{
               fontSize: '0.68rem', color: 'var(--silver)',
               textDecoration: 'none', fontFamily: 'Inter, sans-serif',
               transition: 'color 0.3s',
             }}
             onMouseEnter={e => e.target.style.color = 'var(--off-white)'}
             onMouseLeave={e => e.target.style.color = 'var(--silver)'}
-            >{l}</a>
+            >{l.label}</Link>
           ))}
         </div>
       </div>

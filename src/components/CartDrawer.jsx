@@ -201,13 +201,22 @@ export default function CartDrawer() {
                     {totalPrice.toFixed(2).replace('.', ',')} €
                   </p>
                 </div>
-                <p style={{
-                  fontFamily: 'Inter', fontSize: '0.55rem',
-                  color: 'var(--silver)', letterSpacing: '0.12em',
-                  marginBottom: '1.2rem', opacity: 0.7,
+                {/* Shipping notice */}
+                <div style={{
+                  padding: '0.8rem 1rem',
+                  background: 'rgba(255,255,255,0.03)',
+                  border: '1px solid rgba(255,255,255,0.07)',
+                  marginBottom: '1.2rem',
                 }}>
-                  Verzendkosten worden berekend bij het afrekenen
-                </p>
+                  <p style={{
+                    fontFamily: 'Inter', fontSize: '0.52rem',
+                    color: 'rgba(242,237,230,0.5)', letterSpacing: '0.1em',
+                    lineHeight: 1.7,
+                  }}>
+                    🚚 <strong style={{ color: 'rgba(242,237,230,0.75)' }}>Gratis verzending</strong> naar BE / NL / LU / DE<br />
+                    Gratis wereldwijd bij bestelling boven €150
+                  </p>
+                </div>
                 <a
                   href={`https://shop.bandotigerss.com/cart/${items.map(i => `${i.variantId}:${i.qty}`).join(',')}`}
                   style={{

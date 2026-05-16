@@ -9,10 +9,15 @@ import FireDivider from './components/FireDivider'
 import Lookbook from './components/Lookbook'
 import Manifesto from './components/Manifesto'
 import Campaign from './components/Campaign'
+import EarlyAccess from './components/EarlyAccess'
+import InstagramFeed from './components/InstagramFeed'
 import Footer from './components/Footer'
 import ProductPage from './pages/ProductPage'
 import CheckoutPage from './pages/CheckoutPage'
 import OrderSuccess from './pages/OrderSuccess'
+import PrivacyPage from './pages/PrivacyPage'
+import TermsPage from './pages/TermsPage'
+import CookiePage from './pages/CookiePage'
 import CartDrawer from './components/CartDrawer'
 import { CartProvider } from './context/CartContext'
 import './index.css'
@@ -71,6 +76,8 @@ function HomePage() {
         <Lookbook />
         <Manifesto />
         <Campaign />
+        <EarlyAccess />
+        <InstagramFeed />
       </main>
       <Footer />
     </>
@@ -90,6 +97,9 @@ export default function App() {
           <Route path="/product/:handle" element={<ProductPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/order-success" element={<OrderSuccess />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/terms" element={<TermsPage />} />
+          <Route path="/cookies" element={<CookiePage />} />
         </Routes>
       </CartProvider>
     </BrowserRouter>
