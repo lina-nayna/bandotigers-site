@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useCart } from '../context/CartContext'
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const { totalItems, setIsOpen } = useCart()
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 80)
@@ -39,7 +41,7 @@ export default function Nav() {
         }}
       >
         {/* Logo */}
-        <a href="#" style={{ textDecoration: 'none' }}>
+        <a href="/" style={{ textDecoration: 'none' }}>
           <div style={{
             fontFamily: "'Playfair Display', Georgia, serif",
             fontWeight: 900, fontSize: '1.15rem',
@@ -68,17 +70,50 @@ export default function Nav() {
           ))}
         </ul>
 
-        {/* CTA */}
-        <a href="/#collection" style={{
-          fontSize: '0.65rem', letterSpacing: '0.2em',
-          textTransform: 'uppercase', color: 'var(--black)',
-          background: 'var(--off-white)', padding: '0.6rem 1.4rem',
-          textDecoration: 'none', fontFamily: 'Inter, sans-serif',
-          transition: 'opacity 0.3s',
-        }}
-        onMouseEnter={e => e.target.style.opacity = '0.8'}
-        onMouseLeave={e => e.target.style.opacity = '1'}
-        >Shop Now</a>
+        {/* Right side: Cart + CTA */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+          {/* Cart button */}
+          <button
+            onClick={() => setIsOpen(true)}
+            style={{
+              background: 'none', border: 'none',
+              cursor: 'none', position: 'relative',
+              display: 'flex', alignItems: 'center', gap: '0.5rem',
+              color: 'var(--silver)', fontFamily: 'Inter',
+              fontSize: '0.65rem', letterSpacing: '0.15em',
+              textTransform: 'uppercase', padding: 0,
+            }}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 01-8 0"/>
+            </svg>
+            {totalItems > 0 && (
+              <span style={{
+                position: 'absolute', top: -6, right: -8,
+                background: 'var(--off-white)', color: 'var(--black)',
+                borderRadius: '50%', width: 16, height: 16,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: '0.5rem', fontWeight: 700, fontFamily: 'Inter',
+              }}>
+                {totalItems}
+              </span>
+            )}
+          </button>
+
+          {/* CTA */}
+          <a href="/#collection" className="nav-cta" style={{
+            fontSize: '0.65rem', letterSpacing: '0.2em',
+            textTransform: 'uppercase', color: 'var(--black)',
+            background: 'var(--off-white)', padding: '0.6rem 1.4rem',
+            textDecoration: 'none', fontFamily: 'Inter, sans-serif',
+            transition: 'opacity 0.3s',
+          }}
+          onMouseEnter={e => e.target.style.opacity = '0.8'}
+          onMouseLeave={e => e.target.style.opacity = '1'}
+          >Shop Now</a>
+        </div>
 
         {/* Hamburger */}
         <button
@@ -129,9 +164,7 @@ export default function Nav() {
         @media (max-width: 768px) {
           .nav-desktop { display: none !important; }
           .nav-hamburger { display: flex !important; }
-        }
-        @media (max-width: 768px) {
-          nav > a:last-of-type { display: none; }
+          .nav-cta { display: none !important; }
         }
       `}</style>
     </>

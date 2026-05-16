@@ -11,6 +11,10 @@ import Manifesto from './components/Manifesto'
 import Campaign from './components/Campaign'
 import Footer from './components/Footer'
 import ProductPage from './pages/ProductPage'
+import CheckoutPage from './pages/CheckoutPage'
+import OrderSuccess from './pages/OrderSuccess'
+import CartDrawer from './components/CartDrawer'
+import { CartProvider } from './context/CartContext'
 import './index.css'
 
 function Cursor() {
@@ -78,11 +82,16 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      {!isMobile && <Cursor />}
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/product/:handle" element={<ProductPage />} />
-      </Routes>
+      <CartProvider>
+        {!isMobile && <Cursor />}
+        <CartDrawer />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/product/:handle" element={<ProductPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/order-success" element={<OrderSuccess />} />
+        </Routes>
+      </CartProvider>
     </BrowserRouter>
   )
 }

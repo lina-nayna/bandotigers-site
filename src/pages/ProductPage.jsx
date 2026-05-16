@@ -2,12 +2,15 @@ import { useParams, Link } from 'react-router-dom'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Nav from '../components/Nav'
-import { products, STORE } from '../data/products'
+import { products } from '../data/products'
+import { useCart } from '../context/CartContext'
 
 export default function ProductPage() {
   const { handle } = useParams()
   const product = products.find(p => p.handle === handle)
   const [selectedSize, setSelectedSize] = useState(null)
+  const [added, setAdded] = useState(false)
+  const { addItem } = useCart()
 
   if (!product) {
     return (
@@ -22,10 +25,12 @@ export default function ProductPage() {
     )
   }
 
-  const variantId = selectedSize ? product.variantIds?.[selectedSize] : null
-  const checkoutUrl = variantId
-    ? `${STORE}/cart/${variantId}:1`
-    : null
+  const handleAddToCart = () => {
+    if (!selectedSize) return
+    addItem(product, selectedSize)
+    setAdded(true)
+    setTimeout(() => setAdded(false), 2000)
+  }
 
   return (
     <div style={{ background: 'var(--black)', minHeight: '100vh', cursor: 'none' }}>
@@ -152,37 +157,33 @@ export default function ProductPage() {
             </div>
 
             {/* CTA */}
-            {checkoutUrl ? (
-              <a
-                href={checkoutUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: 'block', width: '100%', padding: '1.1rem',
-                  background: 'var(--off-white)', color: 'var(--black)',
-                  textAlign: 'center', textDecoration: 'none',
-                  fontFamily: 'Inter', fontSize: '0.65rem',
-                  letterSpacing: '0.28em', textTransform: 'uppercase',
-                  marginBottom: '0.8rem', transition: 'opacity 0.3s',
-                }}
-                onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
-                onMouseLeave={e => e.currentTarget.style.opacity = '1'}
-              >
-                Shop Now — {selectedSize} →
-              </a>
+            {product.sizes.length === 0 ? (
+              <button disabled style={{
+                display: 'block', width: '100%', padding: '1.1rem',
+                background: 'rgba(242,237,230,0.15)', color: 'var(--silver)',
+                textAlign: 'center', border: '1px solid rgba(255,255,255,0.1)',
+                fontFamily: 'Inter', fontSize: '0.65rem',
+                letterSpacing: '0.28em', textTransform: 'uppercase',
+                marginBottom: '0.8rem', cursor: 'none',
+              }}>
+                Binnenkort beschikbaar
+              </button>
             ) : (
               <button
-                disabled
+                onClick={handleAddToCart}
+                disabled={!selectedSize}
                 style={{
                   display: 'block', width: '100%', padding: '1.1rem',
-                  background: 'rgba(242,237,230,0.15)', color: 'var(--silver)',
-                  textAlign: 'center', border: '1px solid rgba(255,255,255,0.1)',
+                  background: added ? '#2a2a2a' : selectedSize ? 'var(--off-white)' : 'rgba(242,237,230,0.15)',
+                  color: added ? 'var(--off-white)' : selectedSize ? 'var(--black)' : 'var(--silver)',
+                  textAlign: 'center', border: selectedSize ? 'none' : '1px solid rgba(255,255,255,0.1)',
                   fontFamily: 'Inter', fontSize: '0.65rem',
                   letterSpacing: '0.28em', textTransform: 'uppercase',
                   marginBottom: '0.8rem', cursor: 'none',
+                  transition: 'all 0.3s',
                 }}
               >
-                {product.sizes.length === 0 ? 'Binnenkort beschikbaar' : 'Selecteer een maat'}
+                {added ? '✓ Toegevoegd aan winkelwagen' : selectedSize ? `In winkelwagen — ${selectedSize}` : 'Selecteer een maat'}
               </button>
             )}
 
