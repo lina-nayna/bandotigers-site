@@ -4,6 +4,7 @@ export const products = [
   {
     id: '1',
     img: '/images/x.jpeg',
+    productImg: '/hoodie-wit.png',
     name: 'Victory Hoodie',
     sub: 'Off-White',
     price: '€ 89.95',
@@ -29,6 +30,7 @@ export const products = [
   {
     id: '2',
     img: '/images/trui.jpeg',
+    productImg: '/hoodie-zwart.png',
     name: 'Victory Hoodie',
     sub: 'Obsidian Black',
     price: '€ 89.95',
@@ -55,6 +57,7 @@ export const products = [
   {
     id: '3',
     img: '/images/z.jpeg',
+    productImg: '/shirt-wit.png',
     name: 'Old English Tee',
     sub: 'White / Ecru',
     price: '€ 49.95',
@@ -74,6 +77,7 @@ export const products = [
   {
     id: '4',
     img: '/images/r.jpeg',
+    productImg: '/hoodie-navy.png',
     name: 'Victory Hoodie II',
     sub: 'Ivory',
     price: '€ 94.95',

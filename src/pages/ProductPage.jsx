@@ -66,7 +66,7 @@ export default function ProductPage() {
           >
             <div style={{ aspectRatio: '3/4', overflow: 'hidden', background: '#0d0d0d' }}>
               <motion.img
-                src={product.img}
+                src={product.productImg || product.img}
                 alt={product.name}
                 whileHover={{ scale: 1.04 }}
                 transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
