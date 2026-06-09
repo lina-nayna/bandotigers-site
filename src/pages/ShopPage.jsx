@@ -4,18 +4,56 @@ import { useNavigate } from 'react-router-dom'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import { useCart } from '../context/CartContext'
-import { products as allProducts } from '../data/products'
-
-const products = allProducts.map(p => ({
-  id: p.id,
-  name: p.name,
-  color: p.sub,
-  price: parseFloat(p.price.replace('€ ', '')),
-  image: p.img,
-  handle: p.handle,
-  tag: p.tag,
-  category: p.name.toLowerCase().includes('tee') || p.name.toLowerCase().includes('shirt') ? 'shirt' : 'hoodie',
-}))
+const products = [
+  {
+    id: 'hoodie-zwart',
+    name: 'Victory Hoodie',
+    color: 'Obsidian Black',
+    price: 89.95,
+    image: '/hoodie-zwart.png',
+    handle: 'victory-hoodie-black',
+    tag: 'Limited',
+    category: 'hoodie',
+  },
+  {
+    id: 'hoodie-wit',
+    name: 'Victory Hoodie',
+    color: 'Off-White',
+    price: 89.95,
+    image: '/hoodie-wit.png',
+    handle: 'victory-hoodie-white',
+    tag: 'Bestseller',
+    category: 'hoodie',
+  },
+  {
+    id: 'hoodie-navy',
+    name: 'Victory Hoodie II',
+    color: 'Ivory',
+    price: 94.95,
+    image: '/hoodie-navy.png',
+    handle: 'victory-hoodie-ii',
+    tag: 'Drop',
+    category: 'hoodie',
+  },
+  {
+    id: 'shirt-wit',
+    name: 'Old English Tee',
+    color: 'White / Ecru',
+    price: 49.95,
+    image: '/shirt-wit.png',
+    handle: 'old-english-tee',
+    category: 'shirt',
+  },
+  {
+    id: 'shirt-zwart',
+    name: 'Old English Tee',
+    color: 'Black',
+    price: 49.95,
+    image: '/shirt-zwart.png',
+    handle: 'old-english-tee',
+    category: 'shirt',
+  },
+]
 
 const hoodies = products.filter(p => p.category === 'hoodie')
 const shirts = products.filter(p => p.category === 'shirt')
