@@ -61,7 +61,7 @@ export default function EarlyAccess() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'api-key': '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',
+          'api-key': import.meta.env.VITE_BREVO_API_KEY,
         },
         body: JSON.stringify({ email, listIds: [5], updateEnabled: true }),
       })
