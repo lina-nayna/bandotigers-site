@@ -218,7 +218,7 @@ export default function CartDrawer() {
                   </p>
                 </div>
                 <a
-                  href={`https://shop.bandotigerss.com/cart/${items.map(i => `${i.variantId}:${i.qty}`).join(',')}`}
+                  href={`https://shop.bandotigerss.com/cart/${items.map(i => `${i.variantId}:${i.qty}`).join(',')}?storefront=true`}
                   style={{
                     display: 'block', width: '100%', padding: '1.1rem',
                     background: 'var(--off-white)', color: 'var(--black)',
