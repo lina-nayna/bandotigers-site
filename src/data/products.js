@@ -62,10 +62,14 @@ export const products = [
     sub: 'Navy',
     price: '€ 84.99',
     tag: 'Drop',
-    handle: 'victory-hoodie-ii',
+    handle: 'victory-hoodie-navy-blue',
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
     variantIds: {
-      'One Size': '53935891448149',
+      XS: '53936409248085',
+      S:  '53936321134933',
+      M:  '53936321167701',
+      L:  '53936321200469',
+      XL: '53936321233237',
     },
     description:
       'The Victory Hoodie in navy. Heavyweight 450gsm fleece. Oversized fit. Embroidered tiger detail. Built for those who move without permission.',
