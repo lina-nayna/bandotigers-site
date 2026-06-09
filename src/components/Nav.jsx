@@ -18,7 +18,7 @@ export default function Nav() {
   }, [menuOpen])
 
   const links = [
-    { label: 'Shop',     href: '/#collection' },
+    { label: 'Shop',     href: '/shop' },
     { label: 'Lookbook', href: '/#lookbook' },
     { label: 'Story',    href: '/#manifesto' },
     { label: 'Contact',  href: 'mailto:bandotiger@hotmail.com' },

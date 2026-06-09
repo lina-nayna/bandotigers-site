@@ -56,13 +56,21 @@ export default function EarlyAccess() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (!email) return
-    // Store in localStorage for now — replace with your email service
     try {
-      const existing = JSON.parse(localStorage.getItem('bt-early-access') || '[]')
-      if (!existing.includes(email)) existing.push(email)
-      localStorage.setItem('bt-early-access', JSON.stringify(existing))
-      setStatus('success')
-      setEmail('')
+      const res = await fetch('https://api.brevo.com/v3/contacts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'api-key': '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',
+        },
+        body: JSON.stringify({ email, listIds: [5], updateEnabled: true }),
+      })
+      if (res.ok || res.status === 204) {
+        setStatus('success')
+        setEmail('')
+      } else {
+        setStatus('error')
+      }
     } catch {
       setStatus('error')
     }

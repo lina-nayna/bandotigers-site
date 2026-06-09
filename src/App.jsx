@@ -18,6 +18,7 @@ import OrderSuccess from './pages/OrderSuccess'
 import PrivacyPage from './pages/PrivacyPage'
 import TermsPage from './pages/TermsPage'
 import CookiePage from './pages/CookiePage'
+import ShopPage from './pages/ShopPage'
 import CartDrawer from './components/CartDrawer'
 import { CartProvider } from './context/CartContext'
 import './index.css'
@@ -100,6 +101,7 @@ export default function App() {
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/cookies" element={<CookiePage />} />
+          <Route path="/shop" element={<ShopPage />} />
         </Routes>
       </CartProvider>
     </BrowserRouter>
