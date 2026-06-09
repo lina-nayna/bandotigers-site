@@ -1,6 +1,7 @@
-export const STORE = 'https://bandotiger.myshopify.com'
+export const STORE = 'https://shop.bandotigerss.com'
 
 export const products = [
+  // ── HOODIES ──
   {
     id: '2',
     img: '/hoodie-zwart.png',
@@ -59,7 +60,7 @@ export const products = [
     img: '/hoodie-navy.png',
     productImg: '/hoodie-navy.png',
     name: 'Victory Hoodie',
-    sub: 'Navy',
+    sub: 'Navy Blue',
     price: '€ 84.99',
     tag: 'Drop',
     handle: 'victory-hoodie-navy-blue',
@@ -72,7 +73,7 @@ export const products = [
       XL: '53936321233237',
     },
     description:
-      'The Victory Hoodie in navy. Heavyweight 450gsm fleece. Oversized fit. Embroidered tiger detail. Built for those who move without permission.',
+      'The Victory Hoodie in deep navy blue. Heavyweight 450gsm fleece. Oversized fit. Embroidered tiger detail. Built for those who move without permission.',
     details: [
       '450gsm heavyweight fleece',
       'Oversized fit — size up not required',
@@ -81,23 +82,58 @@ export const products = [
       '100% cotton',
     ],
   },
+
+  // ── T-SHIRTS ──
   {
-    id: '3',
+    id: '5',
     img: '/shirt-wit.png',
     productImg: '/shirt-wit.png',
-    name: 'Old English Tee',
-    sub: 'White / Ecru',
+    name: 'Amsterdam Edition Tee',
+    sub: 'Green',
     price: '€ 55.00',
-    tag: 'New',
-    handle: 'old-english-tee',
-    sizes: [],
-    variantIds: {},
+    tag: 'Limited',
+    handle: 'amsterdam-edition-t-shirt-green',
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    variantIds: {
+      XS: '53936409182549',
+      S:  '53936322904405',
+      M:  '53936322937173',
+      L:  '53936322969941',
+      XL: '53936323002709',
+    },
     description:
-      'Old English lettering. Premium 240gsm jersey. Slightly oversized. The statement tee for those who need no introduction.',
+      'Limited Amsterdam Edition. Premium 240gsm jersey. Slightly oversized. Tiger graphic with Amsterdam signature detail. Represent where you\'re from.',
     details: [
       '240gsm premium jersey',
       'Slightly oversized fit',
-      'Old English print',
+      'Amsterdam tiger graphic',
+      'Limited run',
+      '100% cotton',
+    ],
+  },
+  {
+    id: '6',
+    img: '/shirt-zwart.png',
+    productImg: '/shirt-zwart.png',
+    name: 'Amsterdam Edition Tee',
+    sub: 'Black',
+    price: '€ 55.00',
+    tag: 'New',
+    handle: 'amsterdam-edition-t-shirt-black',
+    sizes: ['S', 'M', 'L', 'XL'],
+    variantIds: {
+      S:  '53936323723605',
+      M:  '53936323756373',
+      L:  '53936323789141',
+      XL: '53936323821909',
+    },
+    description:
+      'Limited Amsterdam Edition in black. Premium 240gsm jersey. Slightly oversized. Tiger graphic with Amsterdam signature detail. Clean. Iconic. Limited.',
+    details: [
+      '240gsm premium jersey',
+      'Slightly oversized fit',
+      'Amsterdam tiger graphic',
+      'Limited run',
       '100% cotton',
     ],
   },
