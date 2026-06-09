@@ -4,56 +4,18 @@ import { useNavigate } from 'react-router-dom'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import { useCart } from '../context/CartContext'
+import { products as allProducts } from '../data/products'
 
-const products = [
-  {
-    id: 'hoodie-zwart',
-    name: 'Victory Or Death Hoodie',
-    color: 'Zwart',
-    price: 89,
-    image: '/hoodie-zwart.png',
-    handle: 'victory-or-death-hoodie-zwart',
-    tag: 'Bestseller',
-    category: 'hoodie',
-  },
-  {
-    id: 'hoodie-wit',
-    name: 'Victory Or Death Hoodie',
-    color: 'Wit',
-    price: 89,
-    image: '/hoodie-wit.png',
-    handle: 'victory-or-death-hoodie-wit',
-    category: 'hoodie',
-  },
-  {
-    id: 'hoodie-navy',
-    name: 'Victory Or Death Hoodie',
-    color: 'Navy',
-    price: 89,
-    image: '/hoodie-navy.png',
-    handle: 'victory-or-death-hoodie-navy',
-    tag: 'New',
-    category: 'hoodie',
-  },
-  {
-    id: 'shirt-wit',
-    name: 'B.T Shirt',
-    color: 'Wit',
-    price: 59,
-    image: '/shirt-wit.png',
-    handle: 'bt-shirt-wit',
-    category: 'shirt',
-  },
-  {
-    id: 'shirt-zwart',
-    name: 'B.T Shirt',
-    color: 'Zwart',
-    price: 59,
-    image: '/shirt-zwart.png',
-    handle: 'bt-shirt-zwart',
-    category: 'shirt',
-  },
-]
+const products = allProducts.map(p => ({
+  id: p.id,
+  name: p.name,
+  color: p.sub,
+  price: parseFloat(p.price.replace('€ ', '')),
+  image: p.img,
+  handle: p.handle,
+  tag: p.tag,
+  category: p.name.toLowerCase().includes('tee') || p.name.toLowerCase().includes('shirt') ? 'shirt' : 'hoodie',
+}))
 
 const hoodies = products.filter(p => p.category === 'hoodie')
 const shirts = products.filter(p => p.category === 'shirt')
