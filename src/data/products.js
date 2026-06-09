@@ -3,7 +3,7 @@ export const STORE = 'https://bandotiger.myshopify.com'
 export const products = [
   {
     id: '1',
-    img: '/images/x.jpeg',
+    img: '/hoodie-wit.png',
     productImg: '/hoodie-wit.png',
     name: 'Victory Hoodie',
     sub: 'Off-White',
@@ -29,7 +29,7 @@ export const products = [
   },
   {
     id: '2',
-    img: '/images/trui.jpeg',
+    img: '/hoodie-zwart.png',
     productImg: '/hoodie-zwart.png',
     name: 'Victory Hoodie',
     sub: 'Obsidian Black',
@@ -56,7 +56,7 @@ export const products = [
   },
   {
     id: '3',
-    img: '/images/z.jpeg',
+    img: '/shirt-wit.png',
     productImg: '/shirt-wit.png',
     name: 'Old English Tee',
     sub: 'White / Ecru',
@@ -76,7 +76,7 @@ export const products = [
   },
   {
     id: '4',
-    img: '/images/r.jpeg',
+    img: '/hoodie-navy.png',
     productImg: '/hoodie-navy.png',
     name: 'Victory Hoodie II',
     sub: 'Ivory',
