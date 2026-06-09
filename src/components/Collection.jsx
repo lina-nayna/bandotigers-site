@@ -23,6 +23,8 @@ function ProductCard({ product, index }) {
         <motion.img
           src={product.img}
           alt={product.name}
+          loading="lazy"
+          decoding="async"
           animate={{ scale: hovered ? 1.06 : 1 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           style={{

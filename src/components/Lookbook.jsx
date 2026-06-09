@@ -18,7 +18,7 @@ function FullPanel({ img, label, title, sub, align = 'left', dark = true }) {
         position: 'absolute', inset: '-15%',
         y: imgY,
       }}>
-        <img src={img} alt="" aria-hidden="true" style={{
+        <img src={img} alt="" aria-hidden="true" loading="lazy" decoding="async" style={{
           width: '100%', height: '100%', objectFit: 'cover',
           filter: dark ? 'brightness(0.42) contrast(1.08)' : 'brightness(0.55)',
         }} />
