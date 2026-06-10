@@ -37,12 +37,12 @@ const products = [
   },
   {
     id: 'shirt-wit',
-    name: 'Amsterdam Edition Tee',
-    color: 'Green',
+    name: 'BT Tee',
+    color: 'White',
     price: 55.00,
     image: '/shirt-wit.png',
-    handle: 'amsterdam-edition-t-shirt-green',
-    tag: 'Limited',
+    handle: 'bt-tee-white',
+    tag: 'New',
     category: 'shirt',
   },
   {
