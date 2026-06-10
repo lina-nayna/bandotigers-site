@@ -73,8 +73,6 @@ function HomePage() {
         <Hero />
         <Ticker />
         <Collection />
-        <FireDivider />
-        <Lookbook />
         <Manifesto />
         <Campaign />
         <EarlyAccess />
