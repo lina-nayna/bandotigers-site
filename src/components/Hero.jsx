@@ -125,17 +125,6 @@ export default function Hero() {
           >
             Shop the Drop
           </a>
-          <a href="#lookbook" style={{
-            padding: '1rem 2.8rem', border: '1px solid rgba(255,255,255,0.25)',
-            color: 'var(--off-white)', fontSize: '0.68rem', letterSpacing: '0.2em',
-            textTransform: 'uppercase', textDecoration: 'none',
-            fontFamily: 'Inter, sans-serif', transition: 'border-color 0.3s',
-          }}
-          onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.7)'}
-          onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)'}
-          >
-            Lookbook
-          </a>
         </motion.div>
       </motion.div>
 
