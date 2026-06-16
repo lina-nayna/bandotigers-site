@@ -9,7 +9,7 @@ export const products = [
     name: 'Victory Hoodie',
     sub: 'Obsidian Black',
     price: '€ 84.99',
-    tag: 'Limited',
+    tag: 'Bestseller',
     handle: 'victory-hoodie-black',
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
     variantIds: {
@@ -88,8 +88,8 @@ export const products = [
     id: '5',
     img: '/shirt-wit.png',
     productImg: '/shirt-wit.png',
-    name: 'BT Tee',
-    sub: 'White',
+    name: 'Amsterdam Edition Tee',
+    sub: 'limited edition',
     price: '€ 55.00',
     tag: 'New',
     handle: 'bt-tee-white',
@@ -117,7 +117,7 @@ export const products = [
     name: 'Amsterdam Edition Tee',
     sub: 'Black',
     price: '€ 55.00',
-    tag: 'New',
+    tag: 'limited edition',
     handle: 'amsterdam-edition-t-shirt-black',
     sizes: ['S', 'M', 'L', 'XL'],
     variantIds: {
