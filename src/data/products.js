@@ -19,15 +19,8 @@ export const products = [
       L:  '53936410853717',
       XL: '53936410886485',
     },
-    description:
-      'The signature Victory Hoodie in pitch black. Heavyweight 450gsm fleece. Oversized fit. Embroidered tiger detail. Two forces. One identity.',
-    details: [
-      '450gsm heavyweight fleece',
-      'Oversized fit — size up not required',
-      'Embroidered tiger graphic',
-      'Kangaroo pocket',
-      '100% cotton',
-    ],
+    description: 'The signature Victory Hoodie in pitch black. Heavyweight 450gsm fleece. Oversized fit. Embroidered tiger detail. Two forces. One identity.',
+    details: ['450gsm heavyweight fleece','Oversized fit — size up not required','Embroidered tiger graphic','Kangaroo pocket','100% cotton'],
   },
   {
     id: '1',
@@ -45,15 +38,8 @@ export const products = [
       M:  '53936411541845',
       L:  '53936411574613',
     },
-    description:
-      'The signature Victory Hoodie in off-white. Heavyweight 450gsm fleece. Oversized fit. Embroidered tiger detail. Built for those who move without permission.',
-    details: [
-      '450gsm heavyweight fleece',
-      'Oversized fit — size up not required',
-      'Embroidered tiger graphic',
-      'Kangaroo pocket',
-      '100% cotton',
-    ],
+    description: 'The signature Victory Hoodie in off-white. Heavyweight 450gsm fleece. Oversized fit. Embroidered tiger detail.',
+    details: ['450gsm heavyweight fleece','Oversized fit — size up not required','Embroidered tiger graphic','Kangaroo pocket','100% cotton'],
   },
   {
     id: '4',
@@ -62,7 +48,7 @@ export const products = [
     name: 'Victory Hoodie',
     sub: 'Navy Blue',
     price: '€ 84.99',
-    tag: 'Drop',
+    tag: 'Limited',
     handle: 'victory-hoodie-navy-blue',
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
     variantIds: {
@@ -72,15 +58,8 @@ export const products = [
       L:  '53936321200469',
       XL: '53936321233237',
     },
-    description:
-      'The Victory Hoodie in deep navy blue. Heavyweight 450gsm fleece. Oversized fit. Embroidered tiger detail. Built for those who move without permission.',
-    details: [
-      '450gsm heavyweight fleece',
-      'Oversized fit — size up not required',
-      'Embroidered tiger graphic',
-      'Kangaroo pocket',
-      '100% cotton',
-    ],
+    description: 'The Victory Hoodie in deep navy blue. Heavyweight 450gsm fleece. Oversized fit. Embroidered tiger detail.',
+    details: ['450gsm heavyweight fleece','Oversized fit — size up not required','Embroidered tiger graphic','Kangaroo pocket','100% cotton'],
   },
 
   // ── T-SHIRTS ──
@@ -91,7 +70,7 @@ export const products = [
     name: 'Amsterdam Edition Tee',
     sub: 'limited edition',
     price: '€ 55.00',
-    tag: 'New',
+    tag: 'Limited edition',
     handle: 'bt-tee-white',
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
     variantIds: {
@@ -101,14 +80,8 @@ export const products = [
       L:  '53936359768405',
       XL: '53936359801173',
     },
-    description:
-      'The essential BT Tee in clean white. Premium 240gsm jersey. Slightly oversized. Minimal tiger logo at the chest. Clean, sharp, timeless.',
-    details: [
-      '240gsm premium jersey',
-      'Slightly oversized fit',
-      'Tiger logo at chest',
-      '100% cotton',
-    ],
+    description: 'The essential BT Tee in clean white. Premium 240gsm jersey. Slightly oversized. Minimal tiger logo at the chest.',
+    details: ['240gsm premium jersey','Slightly oversized fit','Tiger logo at chest','100% cotton'],
   },
   {
     id: '6',
@@ -117,7 +90,7 @@ export const products = [
     name: 'Amsterdam Edition Tee',
     sub: 'Black',
     price: '€ 55.00',
-    tag: 'limited edition',
+    tag: 'Limited edition',
     handle: 'amsterdam-edition-t-shirt-black',
     sizes: ['S', 'M', 'L', 'XL'],
     variantIds: {
@@ -126,14 +99,49 @@ export const products = [
       L:  '53936323789141',
       XL: '53936323821909',
     },
-    description:
-      'Limited Amsterdam Edition in black. Premium 240gsm jersey. Slightly oversized. Tiger graphic with Amsterdam signature detail. Clean. Iconic. Limited.',
-    details: [
-      '240gsm premium jersey',
-      'Slightly oversized fit',
-      'Amsterdam tiger graphic',
-      'Limited run',
-      '100% cotton',
-    ],
+    description: 'Limited Amsterdam Edition in black. Premium 240gsm jersey. Slightly oversized. Tiger graphic with Amsterdam signature detail.',
+    details: ['240gsm premium jersey','Slightly oversized fit','Amsterdam tiger graphic','Limited run','100% cotton'],
+  },
+  {
+    id: '7',
+    img: '/shirt-oranje.png',
+    productImg: '/shirt-oranje.png',
+    name: 'Bando tigers Tee',
+    sub: 'Orange',
+    price: '€ 49.95',
+    tag: 'low in stock',
+    handle: 'bt-tee-orange',
+    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+    variantIds: {
+      XS:  '53936409084245',
+      S:   '53936324477269',
+      M:   '53936324510037',
+      L:   '53936324542805',
+      XL:  '53936324575573',
+      XXL: '53936409117013',
+    },
+    description: 'The boldest piece in the collection. Premium 240gsm jersey. Slightly oversized. Tiger logo in tonal orange. Stand out without saying a word.',
+    details: ['240gsm premium jersey','Slightly oversized fit','Tiger logo at chest','100% cotton'],
+  },
+  {
+    id: '8',
+    img: '/shirt-groen.png',
+    productImg: '/shirt-groen.png',
+    name: 'Amsterdam Edition Tee',
+    sub: 'Green',
+    price: '€ 49.95',
+    tag: 'Limited edition',
+    handle: 'amsterdam-edition-tee-green',
+    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+    variantIds: {
+      XS:  '53936409182549',
+      S:   '53936322904405',
+      M:   '53936322937173',
+      L:   '53936322969941',
+      XL:  '53936323002709',
+      XXL: '53936409215317',
+    },
+    description: 'Limited Amsterdam Edition in army green. Premium 240gsm jersey. Slightly oversized. Amsterdam tiger graphic.',
+    details: ['240gsm premium jersey','Slightly oversized fit','Amsterdam tiger graphic','Limited run','100% cotton'],
   },
 ]
