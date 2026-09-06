@@ -101,6 +101,33 @@ body {
    hebben normaal voorrang op een stylesheet. */
 @media (max-width: 768px) {
 
+  /* Op een telefoon bestaat 'hover' niet. De knoppen die op desktop over
+     de foto verschijnen zouden daar dus onzichtbaar blijven. Op mobiel
+     zetten we ze daarom altijd zichtbaar ONDER de foto, zodat het
+     kledingstuk vrij blijft. */
+  .card-media   {
+    aspect-ratio: auto !important;
+    overflow: visible !important;
+    /* De lichte achtergrond van het fotovlak mag niet doorlopen achter de
+       knoppen, anders valt de off-white tekst erop weg. De foto's hebben
+       zelf al een achtergrond, dus hier is transparant genoeg. */
+    background: transparent !important;
+  }
+  .card-media > img,
+  .card-media > * > img { height: auto !important; aspect-ratio: 3/4 !important; }
+  .card-actions {
+    position: static !important;
+    opacity: 1 !important;
+    background: none !important;
+    padding: 0.75rem 0 0 !important;
+    display: flex !important;
+    gap: 0.5rem !important;
+  }
+  .card-actions--shop { padding-top: 0.75rem !important; }
+
+  /* Maatknoppen: ook met een duim aan te tikken */
+  .size-btn { padding-top: 1.1rem !important; padding-bottom: 1.1rem !important; }
+
   /* Koopknoppen: echte ruimte erbij, zodat ze 44px hoog worden */
   .card-buy, .card-info {
     padding-top: 1.2rem !important;

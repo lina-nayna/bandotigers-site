@@ -11,6 +11,7 @@ export const products = [
     price: '€ 84.99',
     tag: 'Bestseller',
     handle: 'victory-hoodie-black',
+    category: 'hoodie',
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
     variantIds: {
       XS: '53935889121621',
@@ -31,6 +32,7 @@ export const products = [
     price: '€ 84.99',
     tag: 'Bestseller',
     handle: 'victory-hoodie-white',
+    category: 'hoodie',
     sizes: ['XS', 'S', 'M', 'L'],
     variantIds: {
       XS: '53935889056085',
@@ -50,6 +52,7 @@ export const products = [
     price: '€ 84.99',
     tag: 'Limited',
     handle: 'victory-hoodie-navy-blue',
+    category: 'hoodie',
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
     variantIds: {
       XS: '53936409248085',
@@ -72,6 +75,7 @@ export const products = [
     price: '€ 55.00',
     tag: 'Limited edition',
     handle: 'bt-tee-white',
+    category: 'shirt',
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
     variantIds: {
       XS: '53936408985941',
@@ -92,6 +96,7 @@ export const products = [
     price: '€ 55.00',
     tag: 'Limited edition',
     handle: 'amsterdam-edition-t-shirt-black',
+    category: 'shirt',
     sizes: ['S', 'M', 'L', 'XL'],
     variantIds: {
       S:  '53936323723605',
@@ -111,6 +116,7 @@ export const products = [
     price: '€ 49.95',
     tag: 'low in stock',
     handle: 'bt-tee-orange',
+    category: 'shirt',
     sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
     variantIds: {
       XS:  '53936409084245',
@@ -132,6 +138,7 @@ export const products = [
     price: '€ 49.95',
     tag: 'Limited edition',
     handle: 'amsterdam-edition-tee-green',
+    category: 'shirt',
     sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
     variantIds: {
       XS:  '53936409182549',

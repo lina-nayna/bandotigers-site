@@ -2,11 +2,14 @@ import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useInView } from 'framer-motion'
 import { products, STORE } from '../data/products'
+import { useCart } from '../context/CartContext'
 
 function ProductCard({ product, index }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
   const [hovered, setHovered] = useState(false)
+  const [pickingSize, setPickingSize] = useState(false)
+  const { addItem } = useCart()
 
   return (
     <motion.article
@@ -15,11 +18,11 @@ function ProductCard({ product, index }) {
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.9, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] }}
       onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onMouseLeave={() => { setHovered(false); setPickingSize(false) }}
       style={{ position: 'relative', cursor: 'none' }}
     >
       {/* Image wrapper */}
-      <div style={{ position: 'relative', overflow: 'hidden', aspectRatio: '3/4', background: '#111' }}>
+      <div className="card-media" style={{ position: 'relative', overflow: 'hidden', aspectRatio: '3/4', background: '#111' }}>
         <motion.img
           src={product.img}
           alt={product.name}
@@ -36,7 +39,8 @@ function ProductCard({ product, index }) {
 
         {/* Hover overlay */}
         <motion.div
-          animate={{ opacity: hovered ? 1 : 0 }}
+          className="card-actions"
+          animate={{ opacity: (hovered || pickingSize) ? 1 : 0 }}
           transition={{ duration: 0.4 }}
           style={{
             position: 'absolute', inset: 0,
@@ -45,35 +49,57 @@ function ProductCard({ product, index }) {
             gap: '0.6rem', padding: '1.5rem',
           }}
         >
-          <a
-            href={`${STORE}/products/${product.handle}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="card-buy"
-            style={{
-              flex: 1, fontSize: '0.62rem', letterSpacing: '0.2em',
-              textTransform: 'uppercase', color: 'var(--black)',
-              background: 'var(--off-white)', padding: '0.65rem 0',
-              textDecoration: 'none', fontFamily: 'Inter, sans-serif',
-              textAlign: 'center',
-            }}
-          >
-            Koop Nu
-          </a>
-          <Link
-            to={`/product/${product.handle}`}
-            className="card-info"
-            style={{
-              fontSize: '0.62rem', letterSpacing: '0.2em',
-              textTransform: 'uppercase', color: 'var(--off-white)',
-              border: '1px solid rgba(255,255,255,0.4)',
-              padding: '0.65rem 1rem',
-              textDecoration: 'none', fontFamily: 'Inter, sans-serif',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            Info →
-          </Link>
+          {pickingSize ? (
+            /* Maat kiezen — daarna gaat het product meteen in de winkelmand */
+            <div className="size-row" style={{ display: 'flex', gap: '0.4rem', width: '100%' }}>
+              {product.sizes.map(size => (
+                <button
+                  key={size}
+                  onClick={() => { addItem(product, size); setPickingSize(false) }}
+                  className="size-btn"
+                  style={{
+                    flex: 1, fontSize: '0.62rem', letterSpacing: '0.1em',
+                    textTransform: 'uppercase', color: 'var(--black)',
+                    background: 'var(--off-white)', padding: '0.65rem 0',
+                    border: 'none', cursor: 'none',
+                    fontFamily: 'Inter, sans-serif',
+                  }}
+                >
+                  {size}
+                </button>
+              ))}
+            </div>
+          ) : (
+            <>
+              <button
+                onClick={() => setPickingSize(true)}
+                className="card-buy"
+                style={{
+                  flex: 1, fontSize: '0.62rem', letterSpacing: '0.2em',
+                  textTransform: 'uppercase', color: 'var(--black)',
+                  background: 'var(--off-white)', padding: '0.65rem 0',
+                  border: 'none', cursor: 'none',
+                  fontFamily: 'Inter, sans-serif', textAlign: 'center',
+                }}
+              >
+                Koop Nu
+              </button>
+              <Link
+                to={`/product/${product.handle}`}
+                className="card-info"
+                style={{
+                  fontSize: '0.62rem', letterSpacing: '0.2em',
+                  textTransform: 'uppercase', color: 'var(--off-white)',
+                  border: '1px solid rgba(255,255,255,0.4)',
+                  padding: '0.65rem 1rem',
+                  textDecoration: 'none', fontFamily: 'Inter, sans-serif',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                Info →
+              </Link>
+            </>
+          )}
         </motion.div>
 
         {/* Tag */}

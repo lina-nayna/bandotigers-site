@@ -4,58 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import { useCart } from '../context/CartContext'
-const products = [
-  {
-    id: 'hoodie-zwart',
-    name: 'Victory Hoodie',
-    color: 'Obsidian Black',
-    price: 84.99,
-    image: '/hoodie-zwart.png',
-    handle: 'victory-hoodie-black',
-    tag: 'Limited',
-    category: 'hoodie',
-  },
-  {
-    id: 'hoodie-wit',
-    name: 'Victory Hoodie',
-    color: 'Off-White',
-    price: 84.99,
-    image: '/hoodie-wit.png',
-    handle: 'victory-hoodie-white',
-    tag: 'Bestseller',
-    category: 'hoodie',
-  },
-  {
-    id: 'hoodie-navy',
-    name: 'Victory Hoodie',
-    color: 'Navy Blue',
-    price: 84.99,
-    image: '/hoodie-navy.png',
-    handle: 'victory-hoodie-navy-blue',
-    tag: 'Drop',
-    category: 'hoodie',
-  },
-  {
-    id: 'shirt-wit',
-    name: 'BT Tee',
-    color: 'White',
-    price: 55.00,
-    image: '/shirt-wit.png',
-    handle: 'bt-tee-white',
-    tag: 'New',
-    category: 'shirt',
-  },
-  {
-    id: 'shirt-zwart',
-    name: 'Amsterdam Edition Tee',
-    color: 'Black',
-    price: 55.00,
-    image: '/shirt-zwart.png',
-    handle: 'amsterdam-edition-t-shirt-black',
-    tag: 'New',
-    category: 'shirt',
-  },
-]
+import { products } from '../data/products'
 
 const hoodies = products.filter(p => p.category === 'hoodie')
 const shirts = products.filter(p => p.category === 'shirt')
@@ -65,19 +14,12 @@ function ProductCard({ product, index }) {
   const inView = useInView(ref, { once: true, margin: '-60px' })
   const navigate = useNavigate()
   const { addItem } = useCart()
-  const [added, setAdded] = useState(false)
+  const [pickingSize, setPickingSize] = useState(false)
 
-  const handleAdd = (e) => {
+  const handlePick = (e, size) => {
     e.stopPropagation()
-    addItem({
-      id: product.id,
-      name: `${product.name} — ${product.color}`,
-      price: product.price,
-      image: product.image,
-      quantity: 1,
-    })
-    setAdded(true)
-    setTimeout(() => setAdded(false), 1500)
+    addItem(product, size)
+    setPickingSize(false)
   }
 
   return (
@@ -103,14 +45,14 @@ function ProductCard({ product, index }) {
       )}
 
       {/* Image */}
-      <div style={{
+      <div className="card-media" style={{
         background: '#f5f3f0',
         aspectRatio: '3/4',
         overflow: 'hidden',
         position: 'relative',
       }}>
         <motion.img
-          src={product.image}
+          src={product.img}
           alt={product.name}
           whileHover={{ scale: 1.04 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
@@ -119,7 +61,9 @@ function ProductCard({ product, index }) {
 
         {/* Quick add overlay */}
         <motion.div
+          className="card-actions card-actions--shop"
           initial={{ opacity: 0 }}
+          animate={{ opacity: pickingSize ? 1 : undefined }}
           whileHover={{ opacity: 1 }}
           style={{
             position: 'absolute', bottom: 0, left: 0, right: 0,
@@ -128,20 +72,41 @@ function ProductCard({ product, index }) {
             display: 'flex', justifyContent: 'center',
           }}
         >
-          <button
-            onClick={handleAdd}
-            className="card-add"
-            style={{
-              background: 'none', border: '1px solid rgba(255,255,255,0.3)',
-              color: '#f2ede6', fontFamily: 'Inter',
-              fontSize: '0.6rem', letterSpacing: '0.25em',
-              textTransform: 'uppercase', padding: '10px 24px',
-              cursor: 'none', width: '100%',
-              transition: 'all 0.2s',
-            }}
-          >
-            {added ? '✓ Toegevoegd' : 'Add to Cart'}
-          </button>
+          {pickingSize ? (
+            <div className="size-row" style={{ display: 'flex', gap: '0.4rem', width: '100%' }}>
+              {product.sizes.map(size => (
+                <button
+                  key={size}
+                  onClick={(e) => handlePick(e, size)}
+                  className="size-btn"
+                  style={{
+                    flex: 1, background: 'var(--off-white)', border: 'none',
+                    color: 'var(--black)', fontFamily: 'Inter',
+                    fontSize: '0.6rem', letterSpacing: '0.1em',
+                    textTransform: 'uppercase', padding: '10px 0',
+                    cursor: 'none',
+                  }}
+                >
+                  {size}
+                </button>
+              ))}
+            </div>
+          ) : (
+            <button
+              onClick={(e) => { e.stopPropagation(); setPickingSize(true) }}
+              className="card-add"
+              style={{
+                background: 'none', border: '1px solid rgba(255,255,255,0.3)',
+                color: '#f2ede6', fontFamily: 'Inter',
+                fontSize: '0.6rem', letterSpacing: '0.25em',
+                textTransform: 'uppercase', padding: '10px 24px',
+                cursor: 'none', width: '100%',
+                transition: 'all 0.2s',
+              }}
+            >
+              Add to Cart
+            </button>
+          )}
         </motion.div>
       </div>
 
@@ -160,14 +125,14 @@ function ProductCard({ product, index }) {
               fontFamily: 'Inter', fontSize: '0.6rem',
               color: 'rgba(242,237,230,0.4)', letterSpacing: '0.05em',
             }}>
-              {product.color}
+              {product.sub}
             </p>
           </div>
           <p style={{
             fontFamily: "'Playfair Display', serif",
             fontSize: '1rem', color: 'var(--off-white)',
           }}>
-            €{product.price}
+            {product.price}
           </p>
         </div>
       </div>
