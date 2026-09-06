@@ -47,7 +47,7 @@ export default function Footer() {
           }}>
             Be the first to know about new drops, limited releases and exclusive behind-the-scenes content.
           </p>
-          <form onSubmit={handleSubmit} style={{
+          <form onSubmit={handleSubmit} className="footer-form" style={{
             display: 'flex', maxWidth: '440px', margin: '0 auto',
           }}>
             <input
@@ -223,11 +223,27 @@ export default function Footer() {
       </div>
 
       <style>{`
-        @media (max-width: 1024px) { footer > div:nth-of-type(2) { grid-template-columns: 1fr 1fr; } }
+        /* Let op: de inline styles hierboven hebben voorrang op gewone CSS,
+           daarom is !important nodig om ze op mobiel te overschrijven. */
+        @media (max-width: 1024px) {
+          footer > div:nth-of-type(2) { grid-template-columns: 1fr 1fr !important; }
+          footer > div:nth-of-type(1) { padding: 5rem 2rem !important; }
+        }
         @media (max-width: 768px) {
-          footer > div:nth-of-type(2) { grid-template-columns: 1fr; padding: 3rem 2rem; }
-          footer > div:nth-of-type(1) { padding: 4rem 2rem; }
-          footer > div:last-of-type { padding: 1.5rem 2rem; flex-direction: column; align-items: flex-start; }
+          footer > div:nth-of-type(2) {
+            grid-template-columns: 1fr !important;
+            padding: 3rem 1.25rem !important;
+            gap: 2.5rem !important;
+          }
+          footer > div:nth-of-type(1) { padding: 4rem 1.25rem !important; }
+          footer > div:last-of-type {
+            padding: 1.5rem 1.25rem !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+          }
+          .footer-form { flex-direction: column !important; gap: 0.75rem !important; }
+          .footer-form input { width: 100% !important; }
+          .footer-form button { width: 100% !important; }
         }
       `}</style>
     </footer>

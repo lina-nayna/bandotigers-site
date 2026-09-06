@@ -10,7 +10,7 @@ export default function Manifesto() {
   const bgY = useTransform(scrollYProgress, [0, 1], ['-6%', '6%'])
 
   return (
-    <section ref={ref} style={{
+    <section ref={ref} className="manifesto" style={{
       position: 'relative', overflow: 'hidden',
       padding: '12rem 4rem', background: 'var(--charcoal)',
       borderTop: '1px solid rgba(255,255,255,0.06)',
@@ -34,10 +34,11 @@ export default function Manifesto() {
             textTransform: 'uppercase', color: 'var(--silver)',
             fontFamily: 'Inter, sans-serif', marginBottom: '3rem',
           }}
+          className="manifesto-label"
         >— The Manifesto</motion.p>
 
         {/* Animated word-by-word reveal */}
-        <h2 style={{
+        <h2 className="manifesto-quote" style={{
           fontFamily: "'Playfair Display', serif",
           fontSize: 'clamp(2.5rem, 6vw, 6rem)',
           fontWeight: 900, lineHeight: 1.05,
@@ -66,6 +67,7 @@ export default function Manifesto() {
           initial={{ scaleX: 0 }}
           animate={inView ? { scaleX: 1 } : {}}
           transition={{ duration: 1.2, delay: 1.2 }}
+          className="manifesto-divider"
           style={{
             height: '1px', background: 'rgba(255,255,255,0.12)',
             margin: '4rem 0', transformOrigin: 'left',
@@ -77,6 +79,7 @@ export default function Manifesto() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.9, delay: 1.4 }}
+          className="manifesto-bottom"
           style={{ display: 'flex', justifyContent: 'space-between', gap: '3rem', flexWrap: 'wrap' }}
         >
           <div style={{ maxWidth: '420px' }}>
@@ -103,6 +106,19 @@ export default function Manifesto() {
           </div>
         </motion.div>
       </div>
+
+      <style>{`
+        @media (max-width: 1024px) {
+          .manifesto { padding: 8rem 2rem !important; }
+        }
+        @media (max-width: 768px) {
+          .manifesto { padding: 5rem 1.25rem !important; }
+          .manifesto-divider { margin: 2.5rem 0 !important; }
+          .manifesto-label { margin-bottom: 1.75rem !important; }
+          .manifesto-quote { gap: 0 0.5rem !important; }
+          .manifesto-bottom { gap: 2.5rem !important; }
+        }
+      `}</style>
     </section>
   )
 }

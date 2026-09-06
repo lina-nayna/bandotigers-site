@@ -28,7 +28,7 @@ export default function PrivacyPage() {
       <Nav />
       <main style={{ background: 'var(--black)', minHeight: '100vh' }}>
         {/* Hero */}
-        <div style={{
+        <div className="legal-hero" style={{
           padding: '12rem 4rem 6rem',
           borderBottom: '1px solid rgba(255,255,255,0.06)',
           maxWidth: '800px', margin: '0 auto',
@@ -52,7 +52,7 @@ export default function PrivacyPage() {
         </div>
 
         {/* Content */}
-        <div style={{ maxWidth: '800px', margin: '0 auto', padding: '5rem 4rem 8rem' }}>
+        <div className="legal-body" style={{ maxWidth: '800px', margin: '0 auto', padding: '5rem 4rem 8rem' }}>
           <Section title="1. Wie zijn wij?">
             <p>Bando Tigers is een Belgisch premium streetwear merk. Wij zijn verantwoordelijk voor de verwerking van jouw persoonsgegevens als je onze website bezoekt (bandotigerss.com) of bij ons bestelt.</p>
             <p style={{ marginTop: '0.8rem' }}>Contact: <a href="mailto:bandotiger@hotmail.com" style={{ color: 'var(--off-white)' }}>bandotiger@hotmail.com</a></p>
@@ -131,6 +131,14 @@ export default function PrivacyPage() {
           </div>
         </div>
       </main>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .legal-hero { padding: 8rem 1.25rem 3rem !important; }
+          .legal-body { padding: 3rem 1.25rem 5rem !important; }
+        }
+      `}</style>
+
       <Footer />
     </>
   )

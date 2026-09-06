@@ -8,6 +8,7 @@ function EditorialRow({ left, right, reversed = false }) {
   return (
     <motion.div
       ref={ref}
+      className="editorial-row"
       initial={{ opacity: 0, y: 50 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
@@ -21,7 +22,7 @@ function EditorialRow({ left, right, reversed = false }) {
         <div key={i} style={{ position: 'relative', overflow: 'hidden' }}>
           {typeof item === 'string' ? (
             <>
-              <img src={item} alt="" aria-hidden="true" style={{
+              <img src={item} alt="" aria-hidden="true" className="editorial-img" style={{
                 width: '100%', height: '100%',
                 objectFit: 'cover', display: 'block',
                 filter: 'brightness(0.78)',
@@ -39,7 +40,7 @@ function EditorialRow({ left, right, reversed = false }) {
               />
             </>
           ) : (
-            <div style={{
+            <div className="editorial-text" style={{
               background: 'var(--charcoal2)',
               display: 'flex', flexDirection: 'column',
               justifyContent: 'center', padding: '4rem 3rem',
@@ -60,11 +61,11 @@ export default function Campaign() {
   const inView = useInView(ref, { once: true, margin: '-60px' })
 
   return (
-    <section style={{ background: 'var(--black)', padding: '8rem 3rem' }}>
+    <section className="campaign" style={{ background: 'var(--black)', padding: '8rem 3rem' }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
 
         {/* Header */}
-        <div style={{ marginBottom: '5rem' }}>
+        <div className="campaign-header" style={{ marginBottom: '5rem' }}>
           <motion.p
             initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.8 }}
@@ -119,7 +120,7 @@ export default function Campaign() {
                 textDecoration: 'none', fontFamily: 'Inter, sans-serif',
                 borderBottom: '1px solid rgba(255,255,255,0.3)',
                 paddingBottom: '0.3rem',
-              }}>Shop Look →</a>
+              }} className="editorial-link">Shop Look →</a>
             </>
           }
         />
@@ -156,7 +157,7 @@ export default function Campaign() {
                 textDecoration: 'none', fontFamily: 'Inter, sans-serif',
                 borderBottom: '1px solid rgba(255,255,255,0.3)',
                 paddingBottom: '0.3rem',
-              }}>Order Now →</a>
+              }} className="editorial-link">Order Now →</a>
             </>
           }
           right="/images/a.jpeg"
@@ -171,7 +172,7 @@ export default function Campaign() {
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           style={{ position: 'relative', overflow: 'hidden', marginTop: '1.5rem' }}
         >
-          <img src="/images/g.jpeg" alt="Bando Tigers campaign" style={{
+          <img src="/images/g.jpeg" alt="Bando Tigers campaign" className="campaign-cinematic" style={{
             width: '100%', height: '70vh', objectFit: 'cover',
             objectPosition: 'center 25%',
             filter: 'brightness(0.55) contrast(1.1)',
@@ -202,6 +203,32 @@ export default function Campaign() {
         </motion.div>
 
       </div>
+
+      <style>{`
+        /* Tablet: houd twee kolommen, maar geef de tekst meer lucht */
+        @media (max-width: 1024px) {
+          .campaign { padding: 6rem 2rem !important; }
+          .editorial-text { padding: 3rem 2rem !important; }
+        }
+        /* Mobiel: stapel de kolommen onder elkaar */
+        @media (max-width: 768px) {
+          .campaign { padding: 4.5rem 1.25rem !important; }
+          .campaign-header { margin-bottom: 3rem !important; }
+          .editorial-row {
+            grid-template-columns: 1fr !important;
+            gap: 0 !important;
+            margin-bottom: 2.5rem !important;
+          }
+          .editorial-img { aspect-ratio: 3/4 !important; }
+          .editorial-text {
+            padding: 2.5rem 1.5rem !important;
+            min-height: 0 !important;
+            border-top: none !important;
+          }
+          .editorial-link { align-self: flex-start !important; }
+          .campaign-cinematic { height: 60vh !important; }
+        }
+      `}</style>
     </section>
   )
 }

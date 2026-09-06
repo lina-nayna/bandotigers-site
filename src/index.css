@@ -82,3 +82,10 @@ body {
   text-transform: uppercase;
   color: var(--silver);
 }
+
+/* Touchscreens: de custom cursor wordt daar niet gerenderd,
+   dus de standaard cursor weer aanzetten. */
+@media (pointer: coarse) {
+  body { cursor: auto; }
+  .cursor, .cursor-ring, .cursor-dot { display: none; }
+}

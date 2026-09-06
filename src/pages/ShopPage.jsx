@@ -209,12 +209,12 @@ export default function ShopPage() {
         </div>
 
         {/* Hoodies */}
-        <div style={{ padding: '0 2rem', maxWidth: '1400px', margin: '0 auto 5rem' }}>
+        <div className="shop-section" style={{ padding: '0 2rem', maxWidth: '1400px', margin: '0 auto 5rem' }}>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '1rem', marginBottom: '2rem' }}>
             <p style={{ fontFamily: 'Inter', fontSize: '0.6rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)' }}>Hoodies</p>
             <div style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.07)' }} />
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2.5rem 1.5rem' }}>
+          <div className="shop-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2.5rem 1.5rem' }}>
             {hoodies.map((product, i) => (
               <ProductCard key={product.id} product={product} index={i} />
             ))}
@@ -222,12 +222,12 @@ export default function ShopPage() {
         </div>
 
         {/* Shirts */}
-        <div style={{ padding: '0 2rem 8rem', maxWidth: '1400px', margin: '0 auto' }}>
+        <div className="shop-section shop-section--last" style={{ padding: '0 2rem 8rem', maxWidth: '1400px', margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '1rem', marginBottom: '2rem' }}>
             <p style={{ fontFamily: 'Inter', fontSize: '0.6rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)' }}>T-Shirts</p>
             <div style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.07)' }} />
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2.5rem 1.5rem' }}>
+          <div className="shop-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2.5rem 1.5rem' }}>
             {shirts.map((product, i) => (
               <ProductCard key={product.id} product={product} index={i} />
             ))}
@@ -235,6 +235,21 @@ export default function ShopPage() {
         </div>
 
       </main>
+
+      <style>{`
+        @media (max-width: 1024px) {
+          .shop-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        @media (max-width: 768px) {
+          .shop-grid { gap: 2rem 1rem !important; }
+          .shop-section { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
+          .shop-section--last { padding-bottom: 5rem !important; }
+        }
+        @media (max-width: 480px) {
+          .shop-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+
       <Footer />
     </>
   )

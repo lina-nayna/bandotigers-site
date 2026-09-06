@@ -44,7 +44,7 @@ export default function Hero() {
       </motion.div>
 
       {/* Hero text */}
-      <motion.div style={{ position: 'relative', zIndex: 2, textAlign: 'center', y: textY, opacity: textOpacity }}>
+      <motion.div className="hero-text" style={{ position: 'relative', zIndex: 2, textAlign: 'center', y: textY, opacity: textOpacity }}>
 
         {/* Eyebrow */}
         <motion.p
@@ -114,7 +114,7 @@ export default function Hero() {
           transition={{ duration: 1, delay: 1.4 }}
           style={{ marginTop: '3rem', display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}
         >
-          <a href="#collection" style={{
+          <a href="#collection" className="hero-cta" style={{
             padding: '1rem 2.8rem', background: 'var(--off-white)',
             color: 'var(--black)', fontSize: '0.68rem', letterSpacing: '0.2em',
             textTransform: 'uppercase', textDecoration: 'none',
@@ -148,6 +148,13 @@ export default function Hero() {
           style={{ width: '1px', height: '50px', background: 'linear-gradient(to bottom, var(--silver), transparent)', transformOrigin: 'top' }}
         />
       </motion.div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .hero-text { padding: 0 1.5rem !important; }
+          .hero-cta { padding: 0.95rem 2.2rem !important; }
+        }
+      `}</style>
     </section>
   )
 }

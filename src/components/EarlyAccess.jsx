@@ -77,7 +77,7 @@ export default function EarlyAccess() {
   }
 
   return (
-    <section id="early-access" ref={ref} style={{
+    <section id="early-access" ref={ref} className="early-access" style={{
       background: 'var(--black)', padding: '10rem 2rem',
       position: 'relative', overflow: 'hidden',
     }}>
@@ -272,6 +272,12 @@ export default function EarlyAccess() {
       </div>
 
       <style>{`
+        @media (max-width: 1024px) {
+          .early-access { padding: 7rem 2rem !important; }
+        }
+        @media (max-width: 768px) {
+          .early-access { padding: 5rem 1.25rem !important; }
+        }
         @media (max-width: 600px) {
           .early-access-form {
             flex-direction: column !important;

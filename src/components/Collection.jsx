@@ -135,13 +135,13 @@ export default function Collection() {
   const inView = useInView(titleRef, { once: true, margin: '-60px' })
 
   return (
-    <section id="collection" style={{
+    <section id="collection" className="collection" style={{
       background: 'var(--black)', padding: '8rem 4rem',
     }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
 
         {/* Header */}
-        <div style={{ marginBottom: '5rem' }}>
+        <div className="collection-header" style={{ marginBottom: '5rem' }}>
           <SectionLabel>— The Drop · SS 2025</SectionLabel>
           <div style={{ overflow: 'hidden' }}>
             <motion.h2
@@ -164,7 +164,7 @@ export default function Collection() {
         </div>
 
         {/* Grid */}
-        <div style={{
+        <div className="collection-grid" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
           gap: '2rem',
@@ -196,6 +196,23 @@ export default function Collection() {
           </a>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 1024px) {
+          .collection { padding: 6rem 2rem !important; }
+        }
+        @media (max-width: 768px) {
+          .collection { padding: 4.5rem 1.25rem !important; }
+          .collection-header { margin-bottom: 3rem !important; }
+          .collection-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 1rem !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .collection-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </section>
   )
 }

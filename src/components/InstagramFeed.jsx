@@ -77,9 +77,9 @@ export default function InstagramFeed() {
     <section style={{
       background: 'var(--black)',
       padding: '8rem 0 0',
-    }}>
+    }} className="ig-section">
       {/* Header */}
-      <div ref={ref} style={{
+      <div ref={ref} className="ig-header" style={{
         maxWidth: '1280px', margin: '0 auto',
         padding: '0 4rem 4rem',
         display: 'flex', justifyContent: 'space-between',
@@ -102,6 +102,7 @@ export default function InstagramFeed() {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.1 }}
+            className="ig-handle"
             style={{
               fontFamily: "'Playfair Display', serif",
               fontSize: 'clamp(2.5rem, 5vw, 4rem)',
@@ -149,6 +150,14 @@ export default function InstagramFeed() {
       </div>
 
       <style>{`
+        @media (max-width: 1024px) {
+          .ig-header { padding: 0 2rem 3rem !important; }
+        }
+        @media (max-width: 768px) {
+          .ig-section { padding-top: 5rem !important; }
+          .ig-header { padding: 0 1.25rem 2.5rem !important; gap: 1.25rem !important; }
+          .ig-handle { font-size: 2rem !important; }
+        }
         @media (max-width: 900px) {
           .ig-grid { grid-template-columns: repeat(3, 1fr) !important; }
         }

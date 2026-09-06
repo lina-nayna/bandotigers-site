@@ -28,7 +28,7 @@ export default function CookiePage() {
       <Nav />
       <main style={{ background: 'var(--black)', minHeight: '100vh' }}>
         {/* Hero */}
-        <div style={{
+        <div className="legal-hero" style={{
           padding: '12rem 4rem 6rem',
           borderBottom: '1px solid rgba(255,255,255,0.06)',
           maxWidth: '800px', margin: '0 auto',
@@ -52,7 +52,7 @@ export default function CookiePage() {
         </div>
 
         {/* Content */}
-        <div style={{ maxWidth: '800px', margin: '0 auto', padding: '5rem 4rem 8rem' }}>
+        <div className="legal-body" style={{ maxWidth: '800px', margin: '0 auto', padding: '5rem 4rem 8rem' }}>
           <Section title="1. Wat zijn cookies?">
             <p>Cookies zijn kleine tekstbestanden die op jouw apparaat worden opgeslagen wanneer je onze website bezoekt. Ze helpen ons de website goed te laten functioneren en te verbeteren.</p>
           </Section>
@@ -153,6 +153,14 @@ export default function CookiePage() {
           </div>
         </div>
       </main>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .legal-hero { padding: 8rem 1.25rem 3rem !important; }
+          .legal-body { padding: 3rem 1.25rem 5rem !important; }
+        }
+      `}</style>
+
       <Footer />
     </>
   )
