@@ -181,3 +181,15 @@ body {
   .size-row { flex-wrap: wrap !important; }
   .size-btn { flex: 0 0 calc(33.333% - 0.27rem) !important; }
 }
+
+/* Shorts zijn breder dan hoodies en shirts. In een staande kaart met
+   bijsnijden viel het logo op de heup buiten beeld. Deze kaarten laten
+   de foto daarom volledig zien in plaats van hem vol te laten lopen.
+   De witte achtergrond sluit aan op die van de productfoto's. */
+.card-media--wide {
+  background: #ffffff !important;
+}
+.card-media--wide img {
+  object-fit: contain !important;
+  background: #ffffff !important;
+}

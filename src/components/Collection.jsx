@@ -28,7 +28,7 @@ function ProductCard({ product, index }) {
       style={{ position: 'relative', cursor: 'none' }}
     >
       {/* Image wrapper */}
-      <div className="card-media" style={{ position: 'relative', overflow: 'hidden', aspectRatio: '3/4', background: '#111' }}>
+      <div className={`card-media${product.category === 'short' ? ' card-media--wide' : ''}`} style={{ position: 'relative', overflow: 'hidden', aspectRatio: '3/4', background: '#111' }}>
         <motion.img
           src={product.img}
           alt={product.name}

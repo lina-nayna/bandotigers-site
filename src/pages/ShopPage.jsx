@@ -50,7 +50,7 @@ function ProductCard({ product, index }) {
       )}
 
       {/* Image */}
-      <div className="card-media" style={{
+      <div className={`card-media${product.category === 'short' ? ' card-media--wide' : ''}`} style={{
         background: '#f5f3f0',
         aspectRatio: '3/4',
         overflow: 'hidden',
