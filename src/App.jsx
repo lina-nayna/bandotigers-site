@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
@@ -66,6 +66,30 @@ function Cursor() {
   )
 }
 
+/* Bij een paginawissel onthoudt de browser hoe ver je gescrold stond.
+   Klik je onderaan de homepage op "View All Pieces", dan kom je dus
+   halverwege de shoppagina terecht. Dit zet je bij elke wissel weer
+   bovenaan — behalve bij een ankerlink (#collection), want dan wil je
+   juist naar dat blok toe.
+   Zonder 'instant' zou de smooth-scroll uit index.css de hele pagina
+   zichtbaar omhoog laten glijden bij elke klik. */
+function ScrollToTop() {
+  const { pathname, hash } = useLocation()
+
+  useEffect(() => {
+    if (hash) {
+      const el = document.querySelector(hash)
+      if (el) {
+        el.scrollIntoView()
+        return
+      }
+    }
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+  }, [pathname, hash])
+
+  return null
+}
+
 function HomePage() {
   return (
     <>
@@ -91,6 +115,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <CartProvider>
+        <ScrollToTop />
         {!isMobile && <Cursor />}
         <CartDrawer />
         <Routes>
