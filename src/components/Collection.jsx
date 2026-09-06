@@ -49,6 +49,7 @@ function ProductCard({ product, index }) {
             href={`${STORE}/products/${product.handle}`}
             target="_blank"
             rel="noopener noreferrer"
+            className="card-buy"
             style={{
               flex: 1, fontSize: '0.62rem', letterSpacing: '0.2em',
               textTransform: 'uppercase', color: 'var(--black)',
@@ -61,6 +62,7 @@ function ProductCard({ product, index }) {
           </a>
           <Link
             to={`/product/${product.handle}`}
+            className="card-info"
             style={{
               fontSize: '0.62rem', letterSpacing: '0.2em',
               textTransform: 'uppercase', color: 'var(--off-white)',
@@ -180,6 +182,7 @@ export default function Collection() {
             href={`${STORE}/collections/all`}
             target="_blank"
             rel="noopener noreferrer"
+            className="tap-link"
             style={{
               display: 'inline-flex', alignItems: 'center', gap: '1rem',
               fontSize: '0.68rem', letterSpacing: '0.22em',

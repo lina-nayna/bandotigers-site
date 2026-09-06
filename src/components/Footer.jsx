@@ -67,7 +67,7 @@ export default function Footer() {
               onFocus={e => e.target.style.borderColor = 'rgba(255,255,255,0.5)'}
               onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.2)'}
             />
-            <button type="submit" style={{
+            <button type="submit" className="form-submit" style={{
               background: done ? '#2a6b00' : 'var(--off-white)',
               color: 'var(--black)', border: 'none', cursor: 'none',
               padding: '0.9rem 1.75rem', fontSize: '0.65rem',
@@ -111,7 +111,7 @@ export default function Footer() {
               { label: 'IG', href: 'https://www.instagram.com/bandotigers' },
               { label: 'TT', href: 'https://www.tiktok.com/@bandotigers' },
             ].map(s => (
-              <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" style={{
+              <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="footer-social" style={{
                 width: '36px', height: '36px',
                 border: '1px solid rgba(255,255,255,0.12)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -161,7 +161,7 @@ export default function Footer() {
               fontFamily: 'Inter, sans-serif', marginBottom: '1.5rem',
               fontWeight: 600,
             }}>{col.title}</p>
-            <ul style={{ listStyle: 'none' }}>
+            <ul className="footer-links" style={{ listStyle: 'none' }}>
               {col.links.map(l => (
                 <li key={l.label} style={{ marginBottom: '0.75rem' }}>
                   {l.external ? (
@@ -204,7 +204,7 @@ export default function Footer() {
         }}>
           © 2025 Bando Tigers. All rights reserved.
         </p>
-        <div style={{ display: 'flex', gap: '2rem' }}>
+        <div className="footer-legal" style={{ display: 'flex', gap: '2rem' }}>
           {[
             { label: 'Privacy', to: '/privacy' },
             { label: 'Voorwaarden', to: '/terms' },

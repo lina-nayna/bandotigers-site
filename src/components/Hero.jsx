@@ -152,7 +152,7 @@ export default function Hero() {
       <style>{`
         @media (max-width: 768px) {
           .hero-text { padding: 0 1.5rem !important; }
-          .hero-cta { padding: 0.95rem 2.2rem !important; }
+          .hero-cta { padding: 1.15rem 2.2rem !important; }
         }
       `}</style>
     </section>

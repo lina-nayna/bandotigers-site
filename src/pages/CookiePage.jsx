@@ -142,14 +142,14 @@ export default function CookiePage() {
             <p>Vragen over ons cookiebeleid? Stuur een e-mail naar <a href="mailto:bandotiger@hotmail.com" style={{ color: 'var(--off-white)' }}>bandotiger@hotmail.com</a></p>
           </Section>
 
-          <div style={{
+          <div className="legal-links" style={{
             display: 'flex', gap: '2rem', marginTop: '4rem',
             paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.08)',
             flexWrap: 'wrap',
           }}>
-            <Link to="/privacy" style={{ fontFamily: 'Inter', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--silver)', textDecoration: 'none' }}>Privacybeleid →</Link>
-            <Link to="/terms" style={{ fontFamily: 'Inter', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--silver)', textDecoration: 'none' }}>Algemene voorwaarden →</Link>
-            <Link to="/" style={{ fontFamily: 'Inter', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--silver)', textDecoration: 'none' }}>← Terug naar home</Link>
+            <Link to="/privacy" className="tap-link" style={{ fontFamily: 'Inter', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--silver)', textDecoration: 'none' }}>Privacybeleid →</Link>
+            <Link to="/terms" className="tap-link" style={{ fontFamily: 'Inter', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--silver)', textDecoration: 'none' }}>Algemene voorwaarden →</Link>
+            <Link to="/" className="tap-link" style={{ fontFamily: 'Inter', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--silver)', textDecoration: 'none' }}>← Terug naar home</Link>
           </div>
         </div>
       </main>

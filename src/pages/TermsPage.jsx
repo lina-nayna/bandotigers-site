@@ -117,14 +117,14 @@ export default function TermsPage() {
             <p>Op deze voorwaarden is het Belgisch recht van toepassing. Geschillen worden voorgelegd aan de bevoegde rechtbanken in België. Als consument kun je ook terecht bij het Online Dispute Resolution-platform van de Europese Commissie: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--off-white)' }}>ec.europa.eu/consumers/odr</a></p>
           </Section>
 
-          <div style={{
+          <div className="legal-links" style={{
             display: 'flex', gap: '2rem', marginTop: '4rem',
             paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.08)',
             flexWrap: 'wrap',
           }}>
-            <Link to="/privacy" style={{ fontFamily: 'Inter', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--silver)', textDecoration: 'none' }}>Privacybeleid →</Link>
-            <Link to="/cookies" style={{ fontFamily: 'Inter', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--silver)', textDecoration: 'none' }}>Cookiebeleid →</Link>
-            <Link to="/" style={{ fontFamily: 'Inter', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--silver)', textDecoration: 'none' }}>← Terug naar home</Link>
+            <Link to="/privacy" className="tap-link" style={{ fontFamily: 'Inter', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--silver)', textDecoration: 'none' }}>Privacybeleid →</Link>
+            <Link to="/cookies" className="tap-link" style={{ fontFamily: 'Inter', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--silver)', textDecoration: 'none' }}>Cookiebeleid →</Link>
+            <Link to="/" className="tap-link" style={{ fontFamily: 'Inter', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--silver)', textDecoration: 'none' }}>← Terug naar home</Link>
           </div>
         </div>
       </main>

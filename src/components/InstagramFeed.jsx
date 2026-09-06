@@ -118,6 +118,7 @@ export default function InstagramFeed() {
           href={INSTAGRAM_URL}
           target="_blank"
           rel="noopener noreferrer"
+          className="tap-link"
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.3 }}

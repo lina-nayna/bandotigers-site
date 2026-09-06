@@ -130,6 +130,7 @@ function ProductCard({ product, index }) {
         >
           <button
             onClick={handleAdd}
+            className="card-add"
             style={{
               background: 'none', border: '1px solid rgba(255,255,255,0.3)',
               color: '#f2ede6', fontFamily: 'Inter',

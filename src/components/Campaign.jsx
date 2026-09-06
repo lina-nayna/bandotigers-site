@@ -120,7 +120,7 @@ export default function Campaign() {
                 textDecoration: 'none', fontFamily: 'Inter, sans-serif',
                 borderBottom: '1px solid rgba(255,255,255,0.3)',
                 paddingBottom: '0.3rem',
-              }} className="editorial-link">Shop Look →</a>
+              }} className="editorial-link tap-link">Shop Look →</a>
             </>
           }
         />
@@ -157,7 +157,7 @@ export default function Campaign() {
                 textDecoration: 'none', fontFamily: 'Inter, sans-serif',
                 borderBottom: '1px solid rgba(255,255,255,0.3)',
                 paddingBottom: '0.3rem',
-              }} className="editorial-link">Order Now →</a>
+              }} className="editorial-link tap-link">Order Now →</a>
             </>
           }
           right="/images/a.jpeg"

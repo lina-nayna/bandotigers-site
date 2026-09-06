@@ -222,7 +222,7 @@ export default function EarlyAccess() {
                   onFocus={e => e.target.style.borderColor = 'rgba(255,255,255,0.3)'}
                   onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.12)'}
                 />
-                <button
+                <button className="form-submit"
                   type="submit"
                   style={{
                     padding: '1rem 1.8rem',

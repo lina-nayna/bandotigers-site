@@ -40,7 +40,7 @@ export default function Nav() {
         }}
       >
         {/* Logo */}
-        <a href="/" style={{ textDecoration: 'none' }}>
+        <a href="/" className="nav-logo" style={{ textDecoration: 'none' }}>
           <div style={{
             fontFamily: "'Playfair Display', Georgia, serif",
             fontWeight: 900, fontSize: '1.15rem',
@@ -74,6 +74,7 @@ export default function Nav() {
           {/* Cart button */}
           <button
             onClick={() => setIsOpen(true)}
+            className="nav-cart"
             style={{
               background: 'none', border: 'none',
               cursor: 'none', position: 'relative',

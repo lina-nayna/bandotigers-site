@@ -89,3 +89,59 @@ body {
   body { cursor: auto; }
   .cursor, .cursor-ring, .cursor-dot { display: none; }
 }
+
+/* ── TIKDOELEN OP MOBIEL ─────────────────────────────────────
+   Op een telefoon druk je met je duim (ongeveer 10 mm breed), niet met
+   een muisaanwijzer. Apple en Google adviseren daarom minimaal 44x44px
+   per aanraakbaar element. Te kleine knopjes betekenen misgetikte links
+   en afhakende klanten.
+
+   Deze regels gelden alleen onder 768px — op desktop verandert er niets.
+   !important is nodig omdat de layout in inline styles staat, en die
+   hebben normaal voorrang op een stylesheet. */
+@media (max-width: 768px) {
+
+  /* Koopknoppen: echte ruimte erbij, zodat ze 44px hoog worden */
+  .card-buy, .card-info {
+    padding-top: 1.2rem !important;
+    padding-bottom: 1.2rem !important;
+  }
+  .card-add {
+    padding-top: 17px !important;
+    padding-bottom: 17px !important;
+  }
+
+  /* Verzendknoppen van de inschrijfformulieren */
+  .form-submit {
+    padding-top: 1.15rem !important;
+    padding-bottom: 1.15rem !important;
+  }
+
+  /* Navigatiebalk: het tikgebied groeit, maar de negatieve marge houdt
+     de balk even hoog en de iconen op exact dezelfde plek. */
+  .nav-logo   { padding: 10px 0 !important; margin: -10px 0 !important; }
+  .nav-cart   { padding: 13px !important;   margin: -13px !important; }
+  .nav-hamburger { padding: 18px !important; margin: -18px !important; }
+
+  /* Footer: elke link krijgt zijn eigen rij van 44px */
+  .footer-links li { margin-bottom: 0 !important; }
+  .footer-links a  { display: block !important; padding: 0.95rem 0 !important; }
+  .footer-legal a  { display: inline-block !important; padding: 1.1rem 0 !important; }
+  .footer-social   { width: 44px !important; height: 44px !important; }
+
+  /* Links met een onderstreping (Shop Look →, Volg ons →, ...).
+     Hier kan geen padding bij, want dan schuift het streepje mee. In
+     plaats daarvan legt ::after een onzichtbaar tikvlak over de link
+     heen: je ziet niets veranderen, maar het raakvlak is 44px hoog. */
+  /* Deze rij links breekt op mobiel over meerdere regels. De ruimte
+     ertussen moet groter zijn dan de uitbreiding hierboven (2x17px),
+     anders overlappen de tikgebieden en activeer je de verkeerde link. */
+  .legal-links { gap: 2.6rem !important; }
+
+  .tap-link { position: relative !important; }
+  .tap-link::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; top: -17px; bottom: -17px;
+  }
+}
