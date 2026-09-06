@@ -18,4 +18,10 @@ export default defineConfig([
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
   },
+  {
+    // Alles in api/ draait op de server (Vercel), niet in de browser.
+    // Daar bestaan process en console als Node-globals.
+    files: ['api/**/*.js'],
+    languageOptions: { globals: globals.node },
+  },
 ])
