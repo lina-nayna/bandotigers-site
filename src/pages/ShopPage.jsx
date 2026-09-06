@@ -12,6 +12,7 @@ const CAN_HOVER = typeof window !== 'undefined' && window.matchMedia('(hover: ho
 
 const hoodies = products.filter(p => p.category === 'hoodie')
 const shirts = products.filter(p => p.category === 'shirt')
+const shorts = products.filter(p => p.category === 'short')
 
 function ProductCard({ product, index }) {
   const ref = useRef(null)
@@ -192,13 +193,26 @@ export default function ShopPage() {
         </div>
 
         {/* Shirts */}
-        <div className="shop-section shop-section--last" style={{ padding: '0 2rem 8rem', maxWidth: '1400px', margin: '0 auto' }}>
+        <div className="shop-section" style={{ padding: '0 2rem', maxWidth: '1400px', margin: '0 auto 5rem' }}>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '1rem', marginBottom: '2rem' }}>
             <p style={{ fontFamily: 'Inter', fontSize: '0.6rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)' }}>T-Shirts</p>
             <div style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.07)' }} />
           </div>
           <div className="shop-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2.5rem 1.5rem' }}>
             {shirts.map((product, i) => (
+              <ProductCard key={product.id} product={product} index={i} />
+            ))}
+          </div>
+        </div>
+
+        {/* Shorts */}
+        <div className="shop-section shop-section--last" style={{ padding: '0 2rem 8rem', maxWidth: '1400px', margin: '0 auto' }}>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: '1rem', marginBottom: '2rem' }}>
+            <p style={{ fontFamily: 'Inter', fontSize: '0.6rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)' }}>Shorts</p>
+            <div style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.07)' }} />
+          </div>
+          <div className="shop-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2.5rem 1.5rem' }}>
+            {shorts.map((product, i) => (
               <ProductCard key={product.id} product={product} index={i} />
             ))}
           </div>
