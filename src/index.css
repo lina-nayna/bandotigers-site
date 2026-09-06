@@ -153,7 +153,8 @@ body {
   /* Footer: elke link krijgt zijn eigen rij van 44px */
   .footer-links li { margin-bottom: 0 !important; }
   .footer-links a  { display: block !important; padding: 0.95rem 0 !important; }
-  .footer-legal a  { display: inline-block !important; padding: 1.1rem 0 !important; }
+  /* Zijruimte erbij: korte woorden als 'Privacy' zijn anders maar 36px breed. */
+  .footer-legal a  { display: inline-block !important; padding: 1.1rem 0.4rem !important; }
   .footer-social   { width: 44px !important; height: 44px !important; }
 
   /* Links met een onderstreping (Shop Look →, Volg ons →, ...).

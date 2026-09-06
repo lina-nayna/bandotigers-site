@@ -6,6 +6,10 @@ import Footer from '../components/Footer'
 import { useCart } from '../context/CartContext'
 import { products } from '../data/products'
 
+/* Zie Collection.jsx: hover bestaat niet op een touchscreen, dus de
+   zoom zou na één tik blijven hangen. */
+const CAN_HOVER = typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches
+
 const hoodies = products.filter(p => p.category === 'hoodie')
 const shirts = products.filter(p => p.category === 'shirt')
 
@@ -54,7 +58,7 @@ function ProductCard({ product, index }) {
         <motion.img
           src={product.img}
           alt={product.name}
-          whileHover={{ scale: 1.04 }}
+          whileHover={CAN_HOVER ? { scale: 1.04 } : undefined}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
         />

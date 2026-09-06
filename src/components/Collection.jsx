@@ -4,6 +4,12 @@ import { motion, useInView } from 'framer-motion'
 import { products, STORE } from '../data/products'
 import { useCart } from '../context/CartContext'
 
+/* Een telefoon kent geen 'hover'. Tikt iemand toch op een kaart, dan
+   vuurt de browser eenmalig mouseEnter en blijft de zoom-animatie
+   hangen, want mouseLeave komt daar nooit. Daarom hover-effecten alleen
+   aanzetten op apparaten met een echte muisaanwijzer. */
+const CAN_HOVER = typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches
+
 function ProductCard({ product, index }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
@@ -17,7 +23,7 @@ function ProductCard({ product, index }) {
       initial={{ opacity: 0, y: 60 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.9, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] }}
-      onMouseEnter={() => setHovered(true)}
+      onMouseEnter={() => CAN_HOVER && setHovered(true)}
       onMouseLeave={() => { setHovered(false); setPickingSize(false) }}
       style={{ position: 'relative', cursor: 'none' }}
     >
