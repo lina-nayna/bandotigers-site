@@ -110,8 +110,8 @@ export const products = [
   },
   {
     id: '7',
-    img: '/shirt-oranje.png',
-    productImg: '/shirt-oranje.png',
+    img: 'https://cdn.shopify.com/s/files/1/1047/2036/7957/files/oranje_tee_achter.png?v=1781783694',
+    productImg: 'https://cdn.shopify.com/s/files/1/1047/2036/7957/files/oranje_tee_achter.png?v=1781783694',
     name: 'Bando tigers Tee',
     sub: 'Orange',
     price: '€ 49.95',
@@ -132,8 +132,8 @@ export const products = [
   },
   {
     id: '8',
-    img: '/shirt-groen.png',
-    productImg: '/shirt-groen.png',
+    img: 'https://cdn.shopify.com/s/files/1/1047/2036/7957/files/green_tee_achter.png?v=1781801730',
+    productImg: 'https://cdn.shopify.com/s/files/1/1047/2036/7957/files/green_tee_achter.png?v=1781801730',
     name: 'Amsterdam Edition Tee',
     sub: 'Green',
     price: '€ 49.95',
