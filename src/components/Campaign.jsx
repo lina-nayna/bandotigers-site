@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 function EditorialRow({ left, right, reversed = false }) {
   const ref = useRef(null)
@@ -114,13 +115,13 @@ export default function Campaign() {
                 The E63. The hoodie. Two symbols of relentless ambition —
                 built to move fast and look effortless doing it.
               </p>
-              <a href="#" style={{
+              <Link to="/shop" style={{
                 fontSize: '0.65rem', letterSpacing: '0.2em',
                 textTransform: 'uppercase', color: 'var(--off-white)',
                 textDecoration: 'none', fontFamily: 'Inter, sans-serif',
                 borderBottom: '1px solid rgba(255,255,255,0.3)',
                 paddingBottom: '0.3rem',
-              }} className="editorial-link tap-link">Shop Look →</a>
+              }} className="editorial-link tap-link">Shop Look →</Link>
             </>
           }
         />
@@ -151,13 +152,13 @@ export default function Campaign() {
                 Every order is a personal delivery. Handwritten notes,
                 sealed in black — because your experience matters as much as the piece.
               </p>
-              <a href="#" style={{
+              <Link to="/shop" style={{
                 fontSize: '0.65rem', letterSpacing: '0.2em',
                 textTransform: 'uppercase', color: 'var(--off-white)',
                 textDecoration: 'none', fontFamily: 'Inter, sans-serif',
                 borderBottom: '1px solid rgba(255,255,255,0.3)',
                 paddingBottom: '0.3rem',
-              }} className="editorial-link tap-link">Order Now →</a>
+              }} className="editorial-link tap-link">Order Now →</Link>
             </>
           }
           right="/images/a.jpeg"

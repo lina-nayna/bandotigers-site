@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useInView } from 'framer-motion'
-import { products, STORE } from '../data/products'
+import { products } from '../data/products'
 import { useCart } from '../context/CartContext'
 
 /* Een telefoon kent geen 'hover'. Tikt iemand toch op een kaart, dan
@@ -210,10 +210,8 @@ export default function Collection() {
 
         {/* View all */}
         <div style={{ marginTop: '4rem', textAlign: 'center' }}>
-          <a
-            href={`${STORE}/collections/all`}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/shop"
             className="tap-link"
             style={{
               display: 'inline-flex', alignItems: 'center', gap: '1rem',
@@ -228,7 +226,7 @@ export default function Collection() {
             onMouseLeave={e => { e.currentTarget.style.color = 'var(--silver)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)' }}
           >
             View All Pieces →
-          </a>
+          </Link>
         </div>
       </div>
 
