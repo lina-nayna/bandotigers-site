@@ -173,3 +173,11 @@ body {
     left: 0; right: 0; top: -17px; bottom: -17px;
   }
 }
+
+/* Zeer smalle telefoons (iPhone SE en kleiner): zes maten naast elkaar
+   worden maar 41px breed. Daarom daar drie per rij, zodat elke knop
+   breed genoeg blijft om te raken. */
+@media (max-width: 380px) {
+  .size-row { flex-wrap: wrap !important; }
+  .size-btn { flex: 0 0 calc(33.333% - 0.27rem) !important; }
+}

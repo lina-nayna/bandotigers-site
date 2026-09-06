@@ -5,6 +5,7 @@ import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Ticker from './components/Ticker'
 import Collection from './components/Collection'
+import Discount from './components/Discount'
 import FireDivider from './components/FireDivider'
 import Lookbook from './components/Lookbook'
 import Manifesto from './components/Manifesto'
@@ -72,6 +73,7 @@ function HomePage() {
       <main>
         <Hero />
         <Ticker />
+        <Discount />
         <Collection />
         <Manifesto />
         <Campaign />
