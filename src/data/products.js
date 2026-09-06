@@ -115,7 +115,7 @@ export const products = [
     sub: 'Orange',
     price: '€ 49.95',
     tag: 'low in stock',
-    handle: 'bt-tee-orange',
+    handle: 'tiger-tee-orange',
     category: 'shirt',
     sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
     variantIds: {
@@ -137,7 +137,7 @@ export const products = [
     sub: 'Green',
     price: '€ 49.95',
     tag: 'Limited edition',
-    handle: 'amsterdam-edition-tee-green',
+    handle: 'amsterdam-edition-t-shirt-green',
     category: 'shirt',
     sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
     variantIds: {
