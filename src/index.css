@@ -182,14 +182,35 @@ body {
   .size-btn { flex: 0 0 calc(33.333% - 0.27rem) !important; }
 }
 
-/* Shorts zijn breder dan hoodies en shirts. In een staande kaart met
-   bijsnijden viel het logo op de heup buiten beeld. Deze kaarten laten
-   de foto daarom volledig zien in plaats van hem vol te laten lopen.
-   De witte achtergrond sluit aan op die van de productfoto's. */
-.card-media--wide {
+/* ── SHORTS ──────────────────────────────────────────────────
+   Shorts zijn breed, de productkaarten zijn staand (3:4). Met
+   bijsnijden viel het logo op de heup weg; met alleen "volledig
+   passend" zweefde de short in een hoge witte doos. Daarom krijgen
+   deze kaarten een vierkante vorm, de foto volledig in beeld en wat
+   lucht rondom zodat niets de rand raakt. */
+.card-media--wide,
+.card-media--wide img {
   background: #ffffff !important;
 }
-.card-media--wide img {
+.card-media--wide img,
+.card-media--wide > * > img {
   object-fit: contain !important;
-  background: #ffffff !important;
+}
+
+@media (min-width: 769px) {
+  .card-media--wide {
+    aspect-ratio: 1 / 1 !important;
+    padding: 7% !important;
+  }
+}
+
+/* Op mobiel staan de koopknoppen ONDER de foto, binnen dezelfde doos.
+   De doos moet daarom meegroeien (auto) en krijgt de vorm via de foto
+   zelf, anders lopen die knoppen over de producttekst heen. */
+@media (max-width: 768px) {
+  .card-media--wide > img,
+  .card-media--wide > * > img {
+    aspect-ratio: 1 / 1 !important;
+    padding: 6% !important;
+  }
 }
