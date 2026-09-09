@@ -73,7 +73,7 @@ export const products = [
     productImg: '/shirt-wit.png',
     name: 'Amsterdam Edition Tee',
     sub: 'limited edition',
-    price: '€ 49.95',
+    price: '€ 39.99',
     tag: 'Limited edition',
     handle: 'bt-tee-white',
     category: 'shirt',
