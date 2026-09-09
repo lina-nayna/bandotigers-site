@@ -114,7 +114,7 @@ export const products = [
     productImg: 'https://cdn.shopify.com/s/files/1/1047/2036/7957/files/oranje_tee_achter.png?v=1781783694',
     name: 'Bando tigers Tee',
     sub: 'Orange',
-    price: '€ 49.95',
+    price: '€ 34.99',
     tag: 'low in stock',
     handle: 'tiger-tee-orange',
     category: 'shirt',
