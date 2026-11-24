@@ -5,8 +5,11 @@ import Nav from '../components/Nav'
 import { products } from '../data/products'
 import { useCart } from '../context/CartContext'
 import PriceTag from '../components/PriceTag'
+import { useLang, T_SUB } from '../i18n/LanguageContext'
+import { productDescription, productDetail } from '../i18n/productText'
 
 export default function ProductPage() {
+  const { t, lang } = useLang()
   const { handle } = useParams()
   const product = products.find(p => p.handle === handle)
   const [selectedSize, setSelectedSize] = useState(null)
@@ -17,10 +20,10 @@ export default function ProductPage() {
     return (
       <div style={{ background: 'var(--black)', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '2rem' }}>
         <p style={{ color: 'var(--silver)', fontFamily: 'Inter', fontSize: '0.7rem', letterSpacing: '0.25em', textTransform: 'uppercase' }}>
-          Product niet gevonden
+          {t('pp.notfound')}
         </p>
         <Link to="/" style={{ color: 'var(--off-white)', fontFamily: 'Inter', fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none' }}>
-          ← Terug naar collectie
+          {t('pp.backcollection')}
         </Link>
       </div>
     )
@@ -51,7 +54,7 @@ export default function ProductPage() {
             onMouseEnter={e => e.currentTarget.style.color = 'var(--off-white)'}
             onMouseLeave={e => e.currentTarget.style.color = 'var(--silver)'}
           >
-            ← Collection
+            {t('pp.back')}
           </Link>
         </div>
 
@@ -91,7 +94,7 @@ export default function ProductPage() {
               background: 'var(--off-white)', padding: '0.3rem 0.8rem',
               fontFamily: 'Inter',
             }}>
-              {product.tag}
+              {t('tag.' + product.tag)}
             </div>
 
             {/* Name + sub */}
@@ -110,7 +113,7 @@ export default function ProductPage() {
               color: 'var(--silver)', fontFamily: 'Inter',
               textTransform: 'uppercase', marginBottom: '2rem',
             }}>
-              {product.sub}
+              {T_SUB(t, product.sub)}
             </p>
 
             {/* Price */}
@@ -130,7 +133,7 @@ export default function ProductPage() {
                 color: 'var(--silver)', fontFamily: 'Inter',
                 textTransform: 'uppercase', marginBottom: '1.2rem',
               }}>
-                Maat{selectedSize ? ` — ${selectedSize}` : ''}
+                {t('pp.size')}{selectedSize ? ` — ${selectedSize}` : ''}
               </p>
               <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                 {product.sizes.map(size => (
@@ -165,7 +168,7 @@ export default function ProductPage() {
                 letterSpacing: '0.28em', textTransform: 'uppercase',
                 marginBottom: '0.8rem', cursor: 'none',
               }}>
-                Binnenkort beschikbaar
+                {t('pp.soon')}
               </button>
             ) : (
               <button
@@ -182,7 +185,7 @@ export default function ProductPage() {
                   transition: 'all 0.3s',
                 }}
               >
-                {added ? '✓ Toegevoegd aan winkelwagen' : selectedSize ? `In winkelwagen — ${selectedSize}` : 'Selecteer een maat'}
+                {added ? t('pp.added') : selectedSize ? t('pp.addsize', { size: selectedSize }) : t('pp.select')}
               </button>
             )}
 
@@ -194,9 +197,9 @@ export default function ProductPage() {
               display: 'flex', flexDirection: 'column', gap: '0.4rem',
             }}>
               {[
-                { icon: '🚚', text: 'Gratis verzending naar BE / NL / LU / DE' },
-                { icon: '🌍', text: 'Gratis wereldwijd bij bestelling boven €150' },
-                { icon: '↩️', text: 'Retourneren binnen 14 dagen' },
+                { icon: '🚚', text: t('pp.ship1') },
+                { icon: '🌍', text: t('pp.ship2') },
+                { icon: '↩️', text: t('pp.ship3') },
               ].map(item => (
                 <p key={item.text} style={{
                   fontFamily: 'Inter', fontSize: '0.62rem',
@@ -214,13 +217,13 @@ export default function ProductPage() {
                 fontSize: '0.6rem', letterSpacing: '0.22em', color: 'var(--silver)',
                 fontFamily: 'Inter', textTransform: 'uppercase', marginBottom: '1rem',
               }}>
-                Over dit product
+                {t('pp.about')}
               </p>
               <p style={{
                 fontFamily: 'Inter', fontSize: '0.87rem',
                 color: 'rgba(242,237,230,0.65)', lineHeight: 1.9,
               }}>
-                {product.description}
+                {productDescription(product, lang)}
               </p>
             </div>
 
@@ -230,7 +233,7 @@ export default function ProductPage() {
                 fontSize: '0.6rem', letterSpacing: '0.22em', color: 'var(--silver)',
                 fontFamily: 'Inter', textTransform: 'uppercase', marginBottom: '1.2rem',
               }}>
-                Details
+                {t('pp.details')}
               </p>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
                 {product.details.map((d, i) => (
@@ -240,7 +243,7 @@ export default function ProductPage() {
                     display: 'flex', alignItems: 'center', gap: '0.8rem',
                   }}>
                     <span style={{ color: 'var(--orange)', fontSize: '0.45rem', flexShrink: 0 }}>◆</span>
-                    {d}
+                    {productDetail(d, lang)}
                   </li>
                 ))}
               </ul>

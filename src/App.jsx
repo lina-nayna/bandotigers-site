@@ -23,6 +23,7 @@ import CookiePage from './pages/CookiePage'
 import ShopPage from './pages/ShopPage'
 import CartDrawer from './components/CartDrawer'
 import { CartProvider } from './context/CartContext'
+import { LanguageProvider } from './i18n/LanguageContext'
 import './index.css'
 
 function Cursor() {
@@ -115,6 +116,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
+      <LanguageProvider>
       <CartProvider>
         <ScrollToTop />
         {!isMobile && <Cursor />}
@@ -130,6 +132,7 @@ export default function App() {
           <Route path="/shop" element={<ShopPage />} />
         </Routes>
       </CartProvider>
+      </LanguageProvider>
     </BrowserRouter>
   )
 }

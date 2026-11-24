@@ -1,7 +1,9 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import { useLang } from '../i18n/LanguageContext'
 
 export default function Hero() {
+  const { t } = useLang()
   const ref = useRef(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
 
@@ -57,7 +59,7 @@ export default function Hero() {
             marginBottom: '2rem', fontFamily: 'Inter, sans-serif',
           }}
         >
-          SS 2025 Collection
+          {t('hero.eyebrow')}
         </motion.p>
 
         {/* Main title */}
@@ -123,7 +125,7 @@ export default function Hero() {
           onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
           onMouseLeave={e => e.currentTarget.style.opacity = '1'}
           >
-            Shop the Drop
+            {t('hero.cta')}
           </a>
         </motion.div>
       </motion.div>
@@ -140,7 +142,7 @@ export default function Hero() {
         }}
       >
         <span style={{ fontSize: '0.6rem', letterSpacing: '0.25em', color: 'var(--silver)', textTransform: 'uppercase', fontFamily: 'Inter, sans-serif' }}>
-          Scroll
+          {t('hero.scroll')}
         </span>
         <motion.div
           animate={{ scaleY: [0, 1, 0] }}

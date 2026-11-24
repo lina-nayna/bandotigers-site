@@ -1,8 +1,10 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
+import { useLang, T_SUB } from '../i18n/LanguageContext'
 
 export default function CartDrawer() {
+  const { t } = useLang()
   const { items, isOpen, setIsOpen, removeItem, updateQty, totalPrice, totalItems } = useCart()
 
   return (
@@ -54,14 +56,14 @@ export default function CartDrawer() {
                   color: 'var(--off-white)', textTransform: 'uppercase',
                   letterSpacing: '0.1em',
                 }}>
-                  Winkelwagen
+                  {t('cart.title')}
                 </p>
                 <p style={{
                   fontFamily: 'Inter', fontSize: '0.6rem',
                   color: 'var(--silver)', letterSpacing: '0.15em',
                   textTransform: 'uppercase', marginTop: '0.2rem',
                 }}>
-                  {totalItems} {totalItems === 1 ? 'artikel' : 'artikelen'}
+                  {totalItems} {totalItems === 1 ? t('cart.item') : t('cart.items')}
                 </p>
               </div>
               <button
@@ -90,7 +92,7 @@ export default function CartDrawer() {
                     color: 'var(--silver)', letterSpacing: '0.2em',
                     textTransform: 'uppercase',
                   }}>
-                    Je winkelwagen is leeg
+                    {t('cart.empty')}
                   </p>
                   <Link
                     to="/#collection"
@@ -103,7 +105,7 @@ export default function CartDrawer() {
                       paddingBottom: '0.2rem',
                     }}
                   >
-                    Bekijk collectie →
+                    {t('cart.browse')}
                   </Link>
                 </div>
               ) : (
@@ -130,7 +132,7 @@ export default function CartDrawer() {
                           fontFamily: 'Inter', fontSize: '0.6rem',
                           color: 'var(--silver)', letterSpacing: '0.12em',
                           textTransform: 'uppercase',
-                        }}>{item.sub} — {item.size}</p>
+                        }}>{T_SUB(t, item.sub)} — {item.size}</p>
                         <p style={{
                           fontFamily: 'Inter', fontSize: '0.85rem',
                           color: 'var(--off-white)', marginTop: '0.2rem',
@@ -169,7 +171,7 @@ export default function CartDrawer() {
                             letterSpacing: '0.1em', textTransform: 'uppercase',
                             cursor: 'none',
                           }}>
-                            Verwijder
+                            {t('cart.remove')}
                           </button>
                         </div>
                       </div>
@@ -193,7 +195,7 @@ export default function CartDrawer() {
                     fontFamily: 'Inter', fontSize: '0.62rem',
                     color: 'var(--silver)', letterSpacing: '0.18em',
                     textTransform: 'uppercase',
-                  }}>Subtotaal</p>
+                  }}>{t('cart.subtotal')}</p>
                   <p style={{
                     fontFamily: 'Inter', fontSize: '0.95rem',
                     color: 'var(--off-white)',
@@ -213,8 +215,8 @@ export default function CartDrawer() {
                     color: 'rgba(242,237,230,0.5)', letterSpacing: '0.1em',
                     lineHeight: 1.7,
                   }}>
-                    🚚 <strong style={{ color: 'rgba(242,237,230,0.75)' }}>Gratis verzending</strong> naar BE / NL / LU / DE<br />
-                    Gratis wereldwijd bij bestelling boven €150
+                    🚚 <strong style={{ color: 'rgba(242,237,230,0.75)' }}>{t('cart.freeship')}</strong>{t('cart.to')}<br />
+                    {t('cart.world')}
                   </p>
                 </div>
                 <a
@@ -228,7 +230,7 @@ export default function CartDrawer() {
                     marginBottom: '0.8rem',
                   }}
                 >
-                  Afrekenen →
+                  {t('cart.checkout')}
                 </a>
                 <button
                   onClick={() => setIsOpen(false)}
@@ -241,7 +243,7 @@ export default function CartDrawer() {
                     cursor: 'none',
                   }}
                 >
-                  Verder winkelen
+                  {t('cart.continue')}
                 </button>
               </div>
             )}

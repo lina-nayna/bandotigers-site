@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useCart } from '../context/CartContext'
+import LanguageSwitcher from './LanguageSwitcher'
 import SaleBanner, { SALE_BANNER_HEIGHT } from './SaleBanner'
 import { SALE } from '../data/products'
+import { useLang } from '../i18n/LanguageContext'
 
 export default function Nav() {
+  const { t } = useLang()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const { totalItems, setIsOpen } = useCart()
@@ -20,15 +23,16 @@ export default function Nav() {
   }, [menuOpen])
 
   const links = [
-    { label: 'Shop',     href: '/shop' },
-    { label: 'Story',    href: '/#manifesto' },
-    { label: 'Contact',  href: 'mailto:bandotiger@hotmail.com' },
+    { label: t('nav.shop'),    href: '/shop' },
+    { label: t('nav.story'),   href: '/#manifesto' },
+    { label: t('nav.contact'), href: 'mailto:bandotiger@hotmail.com' },
   ]
 
   return (
     <>
       <SaleBanner />
       <motion.nav
+        className="nav-bar"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.5 }}
@@ -73,7 +77,8 @@ export default function Nav() {
         </ul>
 
         {/* Right side: Cart + CTA */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+        <div className="nav-right" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+          <LanguageSwitcher />
           {/* Cart button */}
           <button
             onClick={() => setIsOpen(true)}
@@ -115,7 +120,7 @@ export default function Nav() {
           }}
           onMouseEnter={e => e.target.style.opacity = '0.8'}
           onMouseLeave={e => e.target.style.opacity = '1'}
-          >Shop Now</a>
+          >{t('nav.cta')}</a>
         </div>
 
         {/* Hamburger */}
@@ -168,6 +173,9 @@ export default function Nav() {
           .nav-desktop { display: none !important; }
           .nav-hamburger { display: flex !important; }
           .nav-cta { display: none !important; }
+          .nav-bar { padding: 1.25rem 1.25rem !important; }
+          .nav-right { gap: 0.6rem !important; margin-left: auto; margin-right: 1rem; }
+          .nav-logo div { font-size: 0.95rem !important; white-space: nowrap; }
         }
       `}</style>
     </>

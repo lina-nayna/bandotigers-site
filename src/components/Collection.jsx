@@ -4,6 +4,7 @@ import { motion, useInView } from 'framer-motion'
 import { products } from '../data/products'
 import { useCart } from '../context/CartContext'
 import PriceTag from './PriceTag'
+import { useLang, T_SUB } from '../i18n/LanguageContext'
 
 /* Een telefoon kent geen 'hover'. Tikt iemand toch op een kaart, dan
    vuurt de browser eenmalig mouseEnter en blijft de zoom-animatie
@@ -12,6 +13,7 @@ import PriceTag from './PriceTag'
 const CAN_HOVER = typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches
 
 function ProductCard({ product, index }) {
+  const { t } = useLang()
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
   const [hovered, setHovered] = useState(false)
@@ -89,7 +91,7 @@ function ProductCard({ product, index }) {
                   fontFamily: 'Inter, sans-serif', textAlign: 'center',
                 }}
               >
-                Koop Nu
+                {t('card.buy')}
               </button>
               <Link
                 to={`/product/${product.handle}`}
@@ -103,7 +105,7 @@ function ProductCard({ product, index }) {
                   whiteSpace: 'nowrap',
                 }}
               >
-                Info →
+                {t('card.info')}
               </Link>
             </>
           )}
@@ -117,7 +119,7 @@ function ProductCard({ product, index }) {
           background: 'var(--off-white)', padding: '0.3rem 0.7rem',
           fontFamily: 'Inter, sans-serif',
         }}>
-          {product.tag}
+          {t('tag.' + product.tag)}
         </div>
       </div>
 
@@ -134,7 +136,7 @@ function ProductCard({ product, index }) {
               fontSize: '0.7rem', letterSpacing: '0.1em',
               color: 'var(--silver)', fontFamily: 'Inter, sans-serif',
               textTransform: 'uppercase',
-            }}>{product.sub}</p>
+            }}>{T_SUB(t, product.sub)}</p>
           </div>
           <PriceTag product={product} style={{
             fontFamily: 'Inter, sans-serif',
@@ -166,6 +168,7 @@ function SectionLabel({ children }) {
 }
 
 export default function Collection() {
+  const { t } = useLang()
   const titleRef = useRef(null)
   const inView = useInView(titleRef, { once: true, margin: '-60px' })
 
@@ -177,7 +180,7 @@ export default function Collection() {
 
         {/* Header */}
         <div className="collection-header" style={{ marginBottom: '5rem' }}>
-          <SectionLabel>— The Drop · SS 2025</SectionLabel>
+          <SectionLabel>{t('collection.label')}</SectionLabel>
           <div style={{ overflow: 'hidden' }}>
             <motion.h2
               ref={titleRef}
@@ -226,7 +229,7 @@ export default function Collection() {
             onMouseEnter={e => { e.currentTarget.style.color = 'var(--off-white)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.5)' }}
             onMouseLeave={e => { e.currentTarget.style.color = 'var(--silver)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)' }}
           >
-            View All Pieces →
+            {t('collection.viewall')}
           </Link>
         </div>
       </div>

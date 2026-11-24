@@ -6,6 +6,7 @@ import Footer from '../components/Footer'
 import { useCart } from '../context/CartContext'
 import { products } from '../data/products'
 import PriceTag from '../components/PriceTag'
+import { useLang, T_SUB } from '../i18n/LanguageContext'
 
 /* Zie Collection.jsx: hover bestaat niet op een touchscreen, dus de
    zoom zou na één tik blijven hangen. */
@@ -16,6 +17,7 @@ const shirts = products.filter(p => p.category === 'shirt')
 const shorts = products.filter(p => p.category === 'short')
 
 function ProductCard({ product, index }) {
+  const { t } = useLang()
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-60px' })
   const navigate = useNavigate()
@@ -46,7 +48,7 @@ function ProductCard({ product, index }) {
           fontSize: '0.55rem', letterSpacing: '0.2em',
           textTransform: 'uppercase', padding: '4px 10px',
         }}>
-          {product.tag}
+          {t('tag.' + product.tag)}
         </div>
       )}
 
@@ -110,7 +112,7 @@ function ProductCard({ product, index }) {
                 transition: 'all 0.2s',
               }}
             >
-              Add to Cart
+              {t('card.add')}
             </button>
           )}
         </motion.div>
@@ -131,7 +133,7 @@ function ProductCard({ product, index }) {
               fontFamily: 'Inter', fontSize: '0.6rem',
               color: 'rgba(242,237,230,0.4)', letterSpacing: '0.05em',
             }}>
-              {product.sub}
+              {T_SUB(t, product.sub)}
             </p>
           </div>
           <PriceTag product={product} style={{
@@ -145,6 +147,7 @@ function ProductCard({ product, index }) {
 }
 
 export default function ShopPage() {
+  const { t } = useLang()
   const ref = useRef(null)
   const inView = useInView(ref, { once: true })
 
@@ -166,7 +169,7 @@ export default function ShopPage() {
               textTransform: 'uppercase', lineHeight: 1,
             }}
           >
-            Shop
+            {t('shop.title')}
           </motion.h1>
           <motion.span
             initial={{ opacity: 0 }}
@@ -174,7 +177,7 @@ export default function ShopPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             style={{ fontFamily: 'Inter', fontSize: '0.58rem', letterSpacing: '0.3em', color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase' }}
           >
-            {products.length} Pieces
+            {t('shop.pieces', { n: products.length })}
           </motion.span>
         </div>
 

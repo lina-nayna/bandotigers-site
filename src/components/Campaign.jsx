@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { useLang } from '../i18n/LanguageContext'
 
 function EditorialRow({ left, right, reversed = false }) {
   const ref = useRef(null)
@@ -58,6 +59,7 @@ function EditorialRow({ left, right, reversed = false }) {
 }
 
 export default function Campaign() {
+  const { t } = useLang()
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-60px' })
 
@@ -76,7 +78,7 @@ export default function Campaign() {
               textTransform: 'uppercase', color: 'var(--silver)',
               fontFamily: 'Inter, sans-serif', marginBottom: '1rem',
             }}
-          >— Campaign · SS 2025</motion.p>
+          >{t('campaign.label')}</motion.p>
           <h2 style={{
             fontFamily: "'Playfair Display', serif",
             fontSize: 'clamp(3rem, 7vw, 6rem)',
@@ -96,7 +98,7 @@ export default function Campaign() {
                 fontSize: '0.62rem', letterSpacing: '0.22em',
                 textTransform: 'uppercase', color: 'var(--silver)',
                 fontFamily: 'Inter, sans-serif', marginBottom: '1.5rem',
-              }}>Chapter I — Power</p>
+              }}>{t('campaign.ch1')}</p>
               <h3 style={{
                 fontFamily: "'Playfair Display', serif",
                 fontSize: 'clamp(2rem, 4vw, 3rem)',
@@ -112,8 +114,7 @@ export default function Campaign() {
                 lineHeight: 1.85, fontFamily: 'Inter, sans-serif',
                 fontWeight: 300, marginBottom: '2.5rem',
               }}>
-                The E63. The hoodie. Two symbols of relentless ambition —
-                built to move fast and look effortless doing it.
+                {t('campaign.ch1.body')}
               </p>
               <Link to="/shop" style={{
                 fontSize: '0.65rem', letterSpacing: '0.2em',
@@ -121,7 +122,7 @@ export default function Campaign() {
                 textDecoration: 'none', fontFamily: 'Inter, sans-serif',
                 borderBottom: '1px solid rgba(255,255,255,0.3)',
                 paddingBottom: '0.3rem',
-              }} className="editorial-link tap-link">Shop Look →</Link>
+              }} className="editorial-link tap-link">{t('campaign.ch1.cta')}</Link>
             </>
           }
         />
@@ -133,7 +134,7 @@ export default function Campaign() {
                 fontSize: '0.62rem', letterSpacing: '0.22em',
                 textTransform: 'uppercase', color: 'var(--silver)',
                 fontFamily: 'Inter, sans-serif', marginBottom: '1.5rem',
-              }}>Chapter II — Craft</p>
+              }}>{t('campaign.ch2')}</p>
               <h3 style={{
                 fontFamily: "'Playfair Display', serif",
                 fontSize: 'clamp(2rem, 4vw, 3rem)',
@@ -149,8 +150,7 @@ export default function Campaign() {
                 lineHeight: 1.85, fontFamily: 'Inter, sans-serif',
                 fontWeight: 300, marginBottom: '2.5rem',
               }}>
-                Every order is a personal delivery. Handwritten notes,
-                sealed in black — because your experience matters as much as the piece.
+                {t('campaign.ch2.body')}
               </p>
               <Link to="/shop" style={{
                 fontSize: '0.65rem', letterSpacing: '0.2em',
@@ -158,7 +158,7 @@ export default function Campaign() {
                 textDecoration: 'none', fontFamily: 'Inter, sans-serif',
                 borderBottom: '1px solid rgba(255,255,255,0.3)',
                 paddingBottom: '0.3rem',
-              }} className="editorial-link tap-link">Order Now →</Link>
+              }} className="editorial-link tap-link">{t('campaign.ch2.cta')}</Link>
             </>
           }
           right="/images/a.jpeg"
@@ -189,7 +189,7 @@ export default function Campaign() {
               fontSize: '0.62rem', letterSpacing: '0.28em',
               textTransform: 'uppercase', color: 'var(--silver)',
               fontFamily: 'Inter, sans-serif', marginBottom: '1.5rem',
-            }}>— The Riders</p>
+            }}>{t('campaign.riders')}</p>
             <h2 style={{
               fontFamily: "'Playfair Display', serif",
               fontSize: 'clamp(3rem, 8vw, 8rem)',

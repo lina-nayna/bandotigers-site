@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useLang } from '../i18n/LanguageContext'
 
 export default function Footer() {
+  const { t } = useLang()
   const [email, setEmail] = useState('')
   const [done, setDone] = useState(false)
 
@@ -29,7 +31,7 @@ export default function Footer() {
             fontSize: '0.62rem', letterSpacing: '0.25em',
             textTransform: 'uppercase', color: 'var(--silver)',
             fontFamily: 'Inter, sans-serif', marginBottom: '1.5rem',
-          }}>— Join the Pack</p>
+          }}>{t('footer.join')}</p>
           <h2 style={{
             fontFamily: "'Playfair Display', serif",
             fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
@@ -45,7 +47,7 @@ export default function Footer() {
             lineHeight: 1.8, fontFamily: 'Inter, sans-serif',
             fontWeight: 300, marginBottom: '2.5rem',
           }}>
-            Be the first to know about new drops, limited releases and exclusive behind-the-scenes content.
+            {t('footer.news')}
           </p>
           <form onSubmit={handleSubmit} className="footer-form" style={{
             display: 'flex', maxWidth: '440px', margin: '0 auto',
@@ -54,7 +56,7 @@ export default function Footer() {
               type="email"
               value={email}
               onChange={e => setEmail(e.target.value)}
-              placeholder="your@email.com"
+              placeholder={t('form.email')}
               required
               style={{
                 flex: 1, background: 'transparent',
@@ -75,7 +77,7 @@ export default function Footer() {
               fontFamily: 'Inter, sans-serif', whiteSpace: 'nowrap',
               transition: 'background 0.3s',
             }}>
-              {done ? 'Joined ✓' : 'Join →'}
+              {done ? t('footer.joined') : t('form.join')}
             </button>
           </form>
         </div>
@@ -102,8 +104,8 @@ export default function Footer() {
             lineHeight: 1.8, fontFamily: 'Inter, sans-serif',
             fontWeight: 300, maxWidth: '240px', marginBottom: '2rem',
           }}>
-            Dark. Bold. Untamed.<br />
-            Luxury streetwear for those who refuse to be ordinary.
+            {t('footer.tagline1')}<br />
+            {t('footer.tagline2')}
           </p>
           {/* Socials */}
           <div style={{ display: 'flex', gap: '1rem' }}>
@@ -129,9 +131,9 @@ export default function Footer() {
 
         {[
           {
-            title: 'Shop',
+            title: t('nav.shop'),
             links: [
-              { label: 'Alle stukken', href: '/#collection' },
+              { label: t('footer.all'), href: '/#collection' },
               { label: 'Hoodies', href: '/#collection' },
               { label: 'T-Shirts', href: '/#collection' },
               { label: 'Lookbook', href: '/#lookbook' },
@@ -140,10 +142,10 @@ export default function Footer() {
           {
             title: 'Info',
             links: [
-              { label: 'Our Story', href: '/#manifesto' },
+              { label: t('footer.ourstory'), href: '/#manifesto' },
               { label: 'Early Access', href: '/#early-access' },
-              { label: 'Retourbeleid', href: '/terms#herroeping' },
-              { label: 'Verzending', href: '/terms#verzending' },
+              { label: t('footer.returns'), href: '/terms#herroeping' },
+              { label: t('footer.shipping'), href: '/terms#verzending' },
             ],
           },
           {
@@ -202,12 +204,12 @@ export default function Footer() {
           fontSize: '0.68rem', color: 'var(--silver)',
           fontFamily: 'Inter, sans-serif', letterSpacing: '0.05em',
         }}>
-          © 2025 Bando Tigers. All rights reserved.
+          {t('footer.rights')}
         </p>
         <div className="footer-legal" style={{ display: 'flex', gap: '2rem' }}>
           {[
             { label: 'Privacy', to: '/privacy' },
-            { label: 'Voorwaarden', to: '/terms' },
+            { label: t('footer.terms'), to: '/terms' },
             { label: 'Cookies', to: '/cookies' },
           ].map(l => (
             <Link key={l.label} to={l.to} style={{

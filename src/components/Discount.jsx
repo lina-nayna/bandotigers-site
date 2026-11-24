@@ -1,11 +1,13 @@
 import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { useLang } from '../i18n/LanguageContext'
 
 /* De kortingscode staat als "Inschrijfkorting 25%" in Shopify.
    Verander je hem daar, verander hem dan ook hier. */
 const CODE = 'TIGER25'
 
 export default function Discount() {
+  const { t } = useLang()
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-60px' })
   const [email, setEmail] = useState('')
@@ -65,7 +67,7 @@ export default function Discount() {
             color: '#D4825A', marginBottom: '1.5rem',
           }}
         >
-          ◆ Schrijf je in
+          {t('disc.label')}
         </motion.p>
 
         {/* Titel */}
@@ -82,8 +84,8 @@ export default function Discount() {
             marginBottom: '1.5rem',
           }}
         >
-          25% Korting<br />
-          <em style={{ fontStyle: 'italic', color: 'var(--silver)' }}>Op Alles</em>
+          {t('disc.title1')}<br />
+          <em style={{ fontStyle: 'italic', color: 'var(--silver)' }}>{t('disc.title2')}</em>
         </motion.h2>
 
         {/* Uitleg */}
@@ -97,8 +99,7 @@ export default function Discount() {
             maxWidth: '440px', margin: '0 auto 3rem',
           }}
         >
-          Laat je e-mailadres achter en ontvang direct je code.
-          Geldig op de hele collectie — hoodies, tees, alles.
+          {t('disc.body')}
         </motion.p>
 
         {/* Formulier, of de code na inschrijving */}
@@ -119,7 +120,7 @@ export default function Discount() {
                 letterSpacing: '0.28em', textTransform: 'uppercase',
                 color: 'rgba(242,237,230,0.6)', marginBottom: '1rem',
               }}>
-                Je code
+                {t('disc.yourcode')}
               </p>
               <p style={{
                 fontFamily: "'Playfair Display', serif",
@@ -140,14 +141,14 @@ export default function Discount() {
                   textTransform: 'uppercase', cursor: 'none',
                 }}
               >
-                {copied ? '✓ Gekopieerd' : 'Kopieer code'}
+                {copied ? t('disc.copied') : t('disc.copy')}
               </button>
               <p style={{
                 fontFamily: 'Inter', fontSize: '0.62rem',
                 color: 'rgba(242,237,230,0.45)', lineHeight: 1.7,
                 marginTop: '1.5rem',
               }}>
-                Vul de code in bij het afrekenen.
+                {t('disc.enter')}
               </p>
             </div>
           ) : (
@@ -160,9 +161,9 @@ export default function Discount() {
                   type="email"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
-                  placeholder="jouw@email.com"
+                  placeholder={t('form.email')}
                   required
-                  aria-label="E-mailadres"
+                  aria-label={t('disc.email')}
                   style={{
                     flex: 1, padding: '1.05rem 1.2rem',
                     background: 'rgba(255,255,255,0.04)',
@@ -187,7 +188,7 @@ export default function Discount() {
                     whiteSpace: 'nowrap', flexShrink: 0, fontWeight: 600,
                   }}
                 >
-                  {status === 'loading' ? '...' : 'Claim 25%'}
+                  {status === 'loading' ? '...' : t('disc.claim')}
                 </button>
               </div>
 
@@ -196,7 +197,7 @@ export default function Discount() {
                   fontFamily: 'Inter', fontSize: '0.65rem',
                   color: '#D4825A', marginTop: '1rem',
                 }}>
-                  Er ging iets mis. Probeer het nog eens.
+                  {t('disc.error')}
                 </p>
               )}
 
@@ -205,7 +206,7 @@ export default function Discount() {
                 color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em',
                 marginTop: '1rem',
               }}>
-                Geen spam. Alleen drops en early access.
+                {t('disc.nospam')}
               </p>
             </form>
           )}

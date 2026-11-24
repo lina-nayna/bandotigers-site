@@ -1,9 +1,11 @@
 import { useRef } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
+import { useLang } from '../i18n/LanguageContext'
 
 const words = ['Victory', 'is', 'reserved', 'for', 'those', 'who', 'are', 'willing', 'to', 'pay', 'its', 'price.']
 
 export default function Manifesto() {
+  const { t } = useLang()
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
@@ -35,7 +37,7 @@ export default function Manifesto() {
             fontFamily: 'Inter, sans-serif', marginBottom: '3rem',
           }}
           className="manifesto-label"
-        >— The Manifesto</motion.p>
+        >{t('manifesto.label')}</motion.p>
 
         {/* Animated word-by-word reveal */}
         <h2 className="manifesto-quote" style={{
@@ -87,9 +89,7 @@ export default function Manifesto() {
               color: 'var(--silver)', fontSize: '0.85rem',
               lineHeight: 1.9, fontFamily: 'Inter, sans-serif', fontWeight: 300,
             }}>
-              Bando Tigers was born from the streets, built in garages and forged on racetracks.
-              We don't make clothes. We make statements. Every stitch is a commitment.
-              Every tiger is a reminder of what you're capable of.
+              {t('manifesto.body')}
             </p>
           </div>
           <div>

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { useLang } from '../i18n/LanguageContext'
 
 function useCountdown(targetDate) {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
@@ -47,6 +48,7 @@ function CountUnit({ value, label }) {
 const DROP_DATE = '2025-07-01T12:00:00'
 
 export default function EarlyAccess() {
+  const { t } = useLang()
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
   const timeLeft = useCountdown(DROP_DATE)
@@ -110,7 +112,7 @@ export default function EarlyAccess() {
             color: '#D4825A', marginBottom: '1.5rem',
           }}
         >
-          ◆ Exclusive Drop Access
+          {t('ea.label')}
         </motion.p>
 
         {/* Title */}
@@ -140,7 +142,7 @@ export default function EarlyAccess() {
             maxWidth: '480px', margin: '0 auto 3.5rem',
           }}
         >
-          Limited pieces. Geen restocks. Members get 24-hour early access before the public drop.
+          {t('ea.body')}
         </motion.p>
 
         {/* Countdown */}
@@ -154,13 +156,13 @@ export default function EarlyAccess() {
             marginBottom: '4rem',
           }}
         >
-          <CountUnit value={timeLeft.days} label="Dagen" />
+          <CountUnit value={timeLeft.days} label={t('ea.days')} />
           <div style={{ color: 'rgba(255,255,255,0.2)', fontSize: '2rem', fontFamily: "'Playfair Display', serif" }}>·</div>
-          <CountUnit value={timeLeft.hours} label="Uren" />
+          <CountUnit value={timeLeft.hours} label={t('ea.hours')} />
           <div style={{ color: 'rgba(255,255,255,0.2)', fontSize: '2rem', fontFamily: "'Playfair Display', serif" }}>·</div>
-          <CountUnit value={timeLeft.minutes} label="Minuten" />
+          <CountUnit value={timeLeft.minutes} label={t('ea.minutes')} />
           <div style={{ color: 'rgba(255,255,255,0.2)', fontSize: '2rem', fontFamily: "'Playfair Display', serif" }}>·</div>
-          <CountUnit value={timeLeft.seconds} label="Seconden" />
+          <CountUnit value={timeLeft.seconds} label={t('ea.seconds')} />
         </motion.div>
 
         {/* Divider */}
@@ -192,7 +194,7 @@ export default function EarlyAccess() {
                 letterSpacing: '0.2em', color: 'var(--off-white)',
                 textTransform: 'uppercase',
               }}>
-                ✓ Je staat op de lijst — we nemen contact op voor de drop
+                {t('ea.success')}
               </p>
             </div>
           ) : (
@@ -206,7 +208,7 @@ export default function EarlyAccess() {
                   type="email"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
-                  placeholder="jouw@email.com"
+                  placeholder={t('form.email')}
                   required
                   style={{
                     flex: 1, padding: '1rem 1.2rem',
@@ -230,7 +232,7 @@ export default function EarlyAccess() {
                     whiteSpace: 'nowrap', flexShrink: 0,
                   }}
                 >
-                  Join →
+                  {t('form.join')}
                 </button>
               </div>
               <p style={{
@@ -238,7 +240,7 @@ export default function EarlyAccess() {
                 color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em',
                 marginTop: '1rem',
               }}>
-                Geen spam. Alleen exclusieve drops en early access.
+                {t('ea.nospam')}
               </p>
             </form>
           )}
@@ -254,7 +256,7 @@ export default function EarlyAccess() {
             marginTop: '4rem', flexWrap: 'wrap',
           }}
         >
-          {['24h Early Access', 'Exclusieve Pieces', 'Members Only Drops'].map(benefit => (
+          {[t('ea.b1'), t('ea.b2'), t('ea.b3')].map(benefit => (
             <div key={benefit} style={{
               fontFamily: 'Inter', fontSize: '0.58rem',
               letterSpacing: '0.18em', textTransform: 'uppercase',

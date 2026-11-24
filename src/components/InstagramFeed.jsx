@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { useLang } from '../i18n/LanguageContext'
 
 const INSTAGRAM_HANDLE = 'bandotigers'
 const INSTAGRAM_URL = 'https://www.instagram.com/bandotigers'
@@ -70,6 +71,7 @@ function PostCard({ post, index }) {
 }
 
 export default function InstagramFeed() {
+  const { t } = useLang()
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
@@ -96,7 +98,7 @@ export default function InstagramFeed() {
               textTransform: 'uppercase', marginBottom: '0.8rem',
             }}
           >
-            — Follow Our Journey
+            {t('ig.label')}
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
@@ -134,7 +136,7 @@ export default function InstagramFeed() {
           onMouseEnter={e => { e.currentTarget.style.color = 'var(--off-white)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.5)' }}
           onMouseLeave={e => { e.currentTarget.style.color = 'var(--silver)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)' }}
         >
-          Volg ons →
+          {t('ig.follow')}
         </motion.a>
       </div>
 
