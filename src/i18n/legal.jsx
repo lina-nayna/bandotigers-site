@@ -39,8 +39,8 @@ export const terms = {
         <p>Verwachte levertijden na betaling:</p>
         <UL top items={[
           <><B>België, Nederland, Luxemburg, Duitsland:</B> 2–4 werkdagen — gratis</>,
-          <><B>Rest van Europa:</B> 3–7 werkdagen — €7,95 (gratis boven €150)</>,
-          <><B>Wereldwijd:</B> 5–12 werkdagen — €14,95 (gratis boven €150)</>,
+          <><B>Rest van Europa:</B> 3–7 werkdagen — €10 (gratis boven €150)</>,
+          <><B>Wereldwijd:</B> 5–12 werkdagen — €15 (gratis boven €150)</>,
         ]} />
         <P top>Wij zijn niet verantwoordelijk voor vertragingen door de vervoerder of douane.</P>
       </> },
@@ -80,8 +80,8 @@ export const terms = {
         <p>Expected delivery times after payment:</p>
         <UL top items={[
           <><B>Belgium, the Netherlands, Luxembourg, Germany:</B> 2–4 working days — free</>,
-          <><B>Rest of Europe:</B> 3–7 working days — €7.95 (free over €150)</>,
-          <><B>Worldwide:</B> 5–12 working days — €14.95 (free over €150)</>,
+          <><B>Rest of Europe:</B> 3–7 working days — €10 (free over €150)</>,
+          <><B>Worldwide:</B> 5–12 working days — €15 (free over €150)</>,
         ]} />
         <P top>We are not responsible for delays caused by the carrier or customs.</P>
       </> },
@@ -121,8 +121,8 @@ export const terms = {
         <p>Délais de livraison prévus après paiement :</p>
         <UL top items={[
           <><B>Belgique, Pays-Bas, Luxembourg, Allemagne :</B> 2 à 4 jours ouvrables — gratuit</>,
-          <><B>Reste de l'Europe :</B> 3 à 7 jours ouvrables — 7,95 € (gratuit dès 150 €)</>,
-          <><B>Monde entier :</B> 5 à 12 jours ouvrables — 14,95 € (gratuit dès 150 €)</>,
+          <><B>Reste de l'Europe :</B> 3 à 7 jours ouvrables — 10 € (gratuit dès 150 €)</>,
+          <><B>Monde entier :</B> 5 à 12 jours ouvrables — 15 € (gratuit dès 150 €)</>,
         ]} />
         <P top>Nous ne sommes pas responsables des retards dus au transporteur ou à la douane.</P>
       </> },
