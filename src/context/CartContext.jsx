@@ -1,11 +1,17 @@
 import { createContext, useContext, useState, useEffect } from 'react'
+import { currentPrice, products } from '../data/products'
 
 const CartContext = createContext(null)
 
 export function CartProvider({ children }) {
   const [items, setItems] = useState(() => {
     try {
-      return JSON.parse(localStorage.getItem('bt-cart') || '[]')
+      const saved = JSON.parse(localStorage.getItem('bt-cart') || '[]')
+      // Prijzen opnieuw berekenen, zodat een oud mandje de huidige (sale)prijs toont
+      return saved.map(i => {
+        const p = products.find(p => p.handle === i.handle)
+        return p ? { ...i, priceNum: currentPrice(p) } : i
+      })
     } catch { return [] }
   })
   const [isOpen, setIsOpen] = useState(false)
@@ -29,7 +35,7 @@ export function CartProvider({ children }) {
         sub: product.sub,
         img: product.img,
         price: product.price,
-        priceNum: parseFloat(product.price.replace('€', '').replace(',', '.').trim()),
+        priceNum: currentPrice(product),
         size,
         qty: 1,
         variantId: product.variantIds?.[size],

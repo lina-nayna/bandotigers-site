@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useCart } from '../context/CartContext'
+import SaleBanner, { SALE_BANNER_HEIGHT } from './SaleBanner'
+import { SALE } from '../data/products'
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
@@ -25,12 +27,13 @@ export default function Nav() {
 
   return (
     <>
+      <SaleBanner />
       <motion.nav
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.5 }}
         style={{
-          position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
+          position: 'fixed', top: SALE.active ? SALE_BANNER_HEIGHT : 0, left: 0, right: 0, zIndex: 100,
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           padding: '1.5rem 3rem',
           background: scrolled ? 'rgba(0,0,0,0.92)' : 'transparent',

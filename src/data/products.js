@@ -195,3 +195,27 @@ export const products = [
     details: ['Quick-dry fabric','Elastic waistband with drawstring','Side pockets','Minimal tiger logo at hip','Liner included'],
   },
 ]
+
+/* ── SALE ──
+   Zet active op false om de sale te stoppen. Het percentage moet gelijk
+   zijn aan de korting in Shopify, anders klopt de prijs op de site niet
+   met de prijs bij het afrekenen. */
+export const SALE = {
+  active: true,
+  percent: 40,
+  label: 'Black Friday',
+}
+
+export function basePrice(product) {
+  return parseFloat(product.price.replace('€', '').replace(',', '.').trim())
+}
+
+export function currentPrice(product) {
+  const base = basePrice(product)
+  if (!SALE.active) return base
+  return Math.round(base * (1 - SALE.percent / 100) * 100) / 100
+}
+
+export function formatPrice(n) {
+  return '€ ' + n.toFixed(2)
+}

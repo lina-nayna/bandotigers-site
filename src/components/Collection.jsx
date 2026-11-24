@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { motion, useInView } from 'framer-motion'
 import { products } from '../data/products'
 import { useCart } from '../context/CartContext'
+import PriceTag from './PriceTag'
 
 /* Een telefoon kent geen 'hover'. Tikt iemand toch op een kaart, dan
    vuurt de browser eenmalig mouseEnter en blijft de zoom-animatie
@@ -135,11 +136,11 @@ function ProductCard({ product, index }) {
               textTransform: 'uppercase',
             }}>{product.sub}</p>
           </div>
-          <p style={{
+          <PriceTag product={product} style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: '0.85rem', color: 'var(--off-white)',
             letterSpacing: '0.05em',
-          }}>{product.price}</p>
+          }} />
         </div>
       </div>
     </motion.article>

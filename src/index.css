@@ -214,3 +214,10 @@ body {
     padding: 6% !important;
   }
 }
+
+/* Sale-balk: korte tekst op kleine schermen */
+.sale-short { display: none; }
+@media (max-width: 640px) {
+  .sale-long { display: none; }
+  .sale-short { display: inline; }
+}

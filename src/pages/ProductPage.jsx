@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Nav from '../components/Nav'
 import { products } from '../data/products'
 import { useCart } from '../context/CartContext'
+import PriceTag from '../components/PriceTag'
 
 export default function ProductPage() {
   const { handle } = useParams()
@@ -113,13 +114,11 @@ export default function ProductPage() {
             </p>
 
             {/* Price */}
-            <p style={{
+            <PriceTag product={product} style={{
               fontFamily: 'Inter', fontSize: '1.6rem',
               color: 'var(--off-white)', letterSpacing: '0.04em',
               marginBottom: '3rem',
-            }}>
-              {product.price}
-            </p>
+            }} />
 
             {/* Divider */}
             <div style={{ height: '1px', background: 'rgba(255,255,255,0.08)', marginBottom: '2.5rem' }} />

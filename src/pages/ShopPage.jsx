@@ -5,6 +5,7 @@ import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import { useCart } from '../context/CartContext'
 import { products } from '../data/products'
+import PriceTag from '../components/PriceTag'
 
 /* Zie Collection.jsx: hover bestaat niet op een touchscreen, dus de
    zoom zou na één tik blijven hangen. */
@@ -133,12 +134,10 @@ function ProductCard({ product, index }) {
               {product.sub}
             </p>
           </div>
-          <p style={{
+          <PriceTag product={product} style={{
             fontFamily: "'Playfair Display', serif",
             fontSize: '1rem', color: 'var(--off-white)',
-          }}>
-            {product.price}
-          </p>
+          }} />
         </div>
       </div>
     </motion.div>
