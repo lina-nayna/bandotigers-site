@@ -14,8 +14,10 @@ export default function Hero() {
 
   return (
     <section ref={ref} style={{
-      position: 'relative', height: '100dvh', overflow: 'hidden',
+      position: 'relative', minHeight: '100dvh', overflow: 'hidden',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
+      /* ruimte voor salebalk + navigatie bovenaan en de scroll-indicator onderaan */
+      padding: '10rem 0 8rem', boxSizing: 'border-box',
     }}>
       {/* Cinematic background image */}
       <motion.div style={{
@@ -70,7 +72,7 @@ export default function Hero() {
             transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             style={{
               fontFamily: "'Playfair Display', Georgia, serif",
-              fontSize: 'clamp(4.5rem, 12vw, 11rem)',
+              fontSize: 'clamp(4.5rem, min(12vw, 17vh), 11rem)',
               fontWeight: 900, lineHeight: 0.9,
               color: 'var(--off-white)',
               letterSpacing: '-0.02em',
@@ -132,6 +134,7 @@ export default function Hero() {
 
       {/* Scroll indicator */}
       <motion.div
+        className="hero-scroll"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
@@ -152,6 +155,10 @@ export default function Hero() {
       </motion.div>
 
       <style>{`
+        /* Laag scherm: scroll-indicator weg, anders botst hij met de knop */
+        @media (max-height: 720px) {
+          .hero-scroll { display: none !important; }
+        }
         @media (max-width: 768px) {
           .hero-text { padding: 0 1.5rem !important; }
           .hero-cta { padding: 1.15rem 2.2rem !important; }
