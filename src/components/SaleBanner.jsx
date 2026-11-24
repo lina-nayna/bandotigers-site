@@ -14,8 +14,8 @@ export default function SaleBanner() {
       fontWeight: 900, fontSize: '0.9rem', letterSpacing: '0.12em',
       textTransform: 'uppercase', textAlign: 'center', padding: '0 1rem',
     }}>
-      <span className="sale-long">🐅 {SALE.label} – {SALE.percent}% op alles · Gratis verzending in België &amp; Nederland</span>
-      <span className="sale-short">🐅 {SALE.label} – {SALE.percent}% op alles</span>
+      <span className="sale-long">🐅 {SALE.label} – {SALE.percent}% off everything · Free shipping to Belgium &amp; the Netherlands</span>
+      <span className="sale-short">🐅 {SALE.label} – {SALE.percent}% off everything</span>
     </div>
   )
 }
