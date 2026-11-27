@@ -202,7 +202,7 @@ export const products = [
    met de prijs bij het afrekenen. */
 export const SALE = {
   active: true,
-  percent: 40,
+  percent: 60,
   label: 'Black Friday',
 }
 
